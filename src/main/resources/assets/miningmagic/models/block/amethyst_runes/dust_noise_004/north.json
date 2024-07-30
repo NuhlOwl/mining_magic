@@ -1,0 +1,7 @@
+{
+  "parent": "miningmagic:block/plane_north",
+  "textures": {
+    "particle": "miningmagic:block/amethyst_runes/amethyst_dust_noise_004",
+    "img": "miningmagic:block/amethyst_runes/amethyst_dust_noise_004"
+  }
+}

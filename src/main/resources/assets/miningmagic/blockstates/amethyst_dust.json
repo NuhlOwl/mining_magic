@@ -2,27 +2,83 @@
   "multipart": [
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/up" },
-      "when": { "facing": "up", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "up", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/down" },
-      "when": { "facing": "down", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "down", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/north" },
-      "when": { "facing": "north", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "north", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/south" },
-      "when": { "facing": "south", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "south", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/east" },
-      "when": { "facing": "east", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "east", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_dot/west" },
-      "when": { "facing": "west", "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+      "when": { "facing": "west", "custom_connections": false, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+
+
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/up" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/up" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/up" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/up" }
+      ],
+      "when": { "facing": "up", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/down" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/down" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/down" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/down" }
+      ],
+      "when": { "facing": "down", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/north" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/north" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/north" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/north" }
+      ],
+      "when": { "facing": "north", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/south" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/south" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/south" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/south" }
+      ],
+      "when": { "facing": "south", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/east" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/east" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/east" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/east" }
+      ],
+      "when": { "facing": "east", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
+    },
+    {
+      "apply": [
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_001/west" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_002/west" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_003/west" },
+        { "model": "miningmagic:block/amethyst_runes/dust_noise_004/west" }
+      ],
+      "when": { "facing": "west", "custom_connections": true, "north_to_east": "none", "north_to_west": "none", "south_to_east": "none", "south_to_west": "none", "north_to_south": "none", "east_to_west": "none" }
     },
 
 
