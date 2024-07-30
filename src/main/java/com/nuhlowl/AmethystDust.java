@@ -38,11 +38,6 @@ public class AmethystDust extends Block {
     public static final MapCodec<AmethystDust> CODEC = createCodec(AmethystDust::new);
 
     public static final DirectionProperty FACING = DirectionProperty.of("facing");
-    public static final BooleanProperty IS_CORNER = BooleanProperty.of("is_corner");
-    public static final EnumProperty<DustConnection> NORTH_CONNECTION = EnumProperty.of("north", DustConnection.class);
-    public static final EnumProperty<DustConnection> EAST_CONNECTION = EnumProperty.of("east", DustConnection.class);
-    public static final EnumProperty<DustConnection> SOUTH_CONNECTION = EnumProperty.of("south", DustConnection.class);
-    public static final EnumProperty<DustConnection> WEST_CONNECTION = EnumProperty.of("west", DustConnection.class);
 
     public static final EnumProperty<DustConnection> NORTH_TO_EAST_CONNECTION = EnumProperty.of("north_to_east", DustConnection.class);
     public static final EnumProperty<DustConnection> NORTH_TO_WEST_CONNECTION = EnumProperty.of("north_to_west", DustConnection.class);
@@ -53,14 +48,6 @@ public class AmethystDust extends Block {
 
     public static final BooleanProperty CUSTOM_CONNECTIONS = BooleanProperty.of("custom_connections");
 
-    private static final Map<Direction, Map<Direction, EnumProperty<DustConnection>>> FACING_NEIGHBOR_TO_CONNECTION = ImmutableMap.of(
-            Direction.UP, ImmutableMap.of(Direction.NORTH, NORTH_CONNECTION, Direction.SOUTH, SOUTH_CONNECTION, Direction.EAST, EAST_CONNECTION, Direction.WEST, WEST_CONNECTION),
-            Direction.DOWN, ImmutableMap.of(Direction.NORTH, NORTH_CONNECTION, Direction.SOUTH, SOUTH_CONNECTION, Direction.EAST, EAST_CONNECTION, Direction.WEST, WEST_CONNECTION),
-            Direction.NORTH, ImmutableMap.of(Direction.UP, NORTH_CONNECTION, Direction.DOWN, SOUTH_CONNECTION, Direction.EAST, WEST_CONNECTION, Direction.WEST, EAST_CONNECTION),
-            Direction.SOUTH, ImmutableMap.of(Direction.UP, NORTH_CONNECTION, Direction.DOWN, SOUTH_CONNECTION, Direction.EAST, EAST_CONNECTION, Direction.WEST, WEST_CONNECTION),
-            Direction.EAST, ImmutableMap.of(Direction.UP, NORTH_CONNECTION, Direction.DOWN, SOUTH_CONNECTION, Direction.NORTH, EAST_CONNECTION, Direction.SOUTH, WEST_CONNECTION),
-            Direction.WEST, ImmutableMap.of(Direction.UP, NORTH_CONNECTION, Direction.DOWN, SOUTH_CONNECTION, Direction.SOUTH, EAST_CONNECTION, Direction.NORTH, WEST_CONNECTION)
-    );
 
     private static final Map<Direction, Map<Direction, List<Pair<Direction, EnumProperty<DustConnection>>>>> FACING_NEIGHBOR_TO_POSSIBLE_CONNECTIONS = ImmutableMap.of(
             Direction.UP, ImmutableMap.of(
@@ -116,17 +103,17 @@ public class AmethystDust extends Block {
                     Direction.DOWN, List.of(
                             new Pair<>(Direction.EAST, SOUTH_TO_WEST_CONNECTION),
                             new Pair<>(Direction.WEST, SOUTH_TO_EAST_CONNECTION),
-                            new Pair<>(Direction.NORTH, NORTH_TO_SOUTH_CONNECTION)
+                            new Pair<>(Direction.UP, NORTH_TO_SOUTH_CONNECTION)
                     ),
                     Direction.EAST, List.of(
-                            new Pair<>(Direction.NORTH, NORTH_TO_WEST_CONNECTION),
+                            new Pair<>(Direction.UP, NORTH_TO_WEST_CONNECTION),
                             new Pair<>(Direction.WEST, EAST_TO_WEST_CONNECTION),
-                            new Pair<>(Direction.SOUTH, SOUTH_TO_WEST_CONNECTION)
+                            new Pair<>(Direction.DOWN, SOUTH_TO_WEST_CONNECTION)
                     ),
                     Direction.WEST, List.of(
                             new Pair<>(Direction.EAST, EAST_TO_WEST_CONNECTION),
-                            new Pair<>(Direction.NORTH, NORTH_TO_EAST_CONNECTION),
-                            new Pair<>(Direction.SOUTH, SOUTH_TO_EAST_CONNECTION)
+                            new Pair<>(Direction.UP, NORTH_TO_EAST_CONNECTION),
+                            new Pair<>(Direction.DOWN, SOUTH_TO_EAST_CONNECTION)
                     )
             ),
             Direction.SOUTH, ImmutableMap.of(
@@ -148,7 +135,7 @@ public class AmethystDust extends Block {
                     Direction.WEST, List.of(
                             new Pair<>(Direction.EAST, EAST_TO_WEST_CONNECTION),
                             new Pair<>(Direction.UP, NORTH_TO_WEST_CONNECTION),
-                            new Pair<>(Direction.DOWN, SOUTH_TO_EAST_CONNECTION)
+                            new Pair<>(Direction.DOWN, SOUTH_TO_WEST_CONNECTION)
                     )
             ),
             Direction.EAST, ImmutableMap.of(
@@ -181,8 +168,8 @@ public class AmethystDust extends Block {
                     ),
                     Direction.DOWN, List.of(
                             new Pair<>(Direction.UP, NORTH_TO_SOUTH_CONNECTION),
-                            new Pair<>(Direction.NORTH, SOUTH_TO_EAST_CONNECTION),
-                            new Pair<>(Direction.SOUTH, SOUTH_TO_WEST_CONNECTION)
+                            new Pair<>(Direction.NORTH, SOUTH_TO_WEST_CONNECTION),
+                            new Pair<>(Direction.SOUTH, SOUTH_TO_EAST_CONNECTION)
                     ),
                     Direction.NORTH, List.of(
                             new Pair<>(Direction.UP, NORTH_TO_WEST_CONNECTION),
@@ -201,11 +188,6 @@ public class AmethystDust extends Block {
         super(settings);
         setDefaultState(getDefaultState()
                 .with(FACING, Direction.UP)
-                .with(IS_CORNER, false)
-                .with(NORTH_CONNECTION, DustConnection.NONE)
-                .with(EAST_CONNECTION, DustConnection.NONE)
-                .with(SOUTH_CONNECTION, DustConnection.NONE)
-                .with(WEST_CONNECTION, DustConnection.NONE)
                 .with(NORTH_TO_EAST_CONNECTION, DustConnection.NONE)
                 .with(NORTH_TO_WEST_CONNECTION, DustConnection.NONE)
                 .with(SOUTH_TO_EAST_CONNECTION, DustConnection.NONE)
@@ -224,11 +206,6 @@ public class AmethystDust extends Block {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING)
-                .add(IS_CORNER)
-                .add(NORTH_CONNECTION)
-                .add(EAST_CONNECTION)
-                .add(SOUTH_CONNECTION)
-                .add(WEST_CONNECTION)
                 .add(NORTH_TO_EAST_CONNECTION)
                 .add(NORTH_TO_WEST_CONNECTION)
                 .add(SOUTH_TO_EAST_CONNECTION)
@@ -276,18 +253,7 @@ public class AmethystDust extends Block {
             state = state.with(EAST_TO_WEST_CONNECTION, DustConnection.CONNECTED);
         }
 
-        for (Direction direction : neighbors) {
-            BlockPos neighborPos = ctx.getBlockPos().offset(direction);
-            BlockState neighborState = ctx.getWorld().getBlockState(neighborPos);
-            EnumProperty<DustConnection> connection = FACING_NEIGHBOR_TO_CONNECTION.get(facing).get(direction);
-            if (neighborState.isOf(MiningMagic.AMETHYST_DUST_BLOCK)) {
-                state = state.with(connection, DustConnection.CONNECTED);
-            } else {
-                state = state.with(connection, DustConnection.NONE);
-            }
-        }
-
-        return setIsCorner(state.with(FACING, facing));
+        return state.with(FACING, facing);
     }
 
     @Override
@@ -471,27 +437,11 @@ public class AmethystDust extends Block {
             }
         }
 
-        EnumProperty<DustConnection> connection = FACING_NEIGHBOR_TO_CONNECTION.get(facing).get(direction);
-        if (connection == null) {
-            return state;
-        }
-
-        if (neighborState.isOf(MiningMagic.AMETHYST_DUST_BLOCK)) {
-            state = state.with(connection, DustConnection.CONNECTED);
-        } else {
-            state = state.with(connection, DustConnection.NONE);
-        }
-        return setIsCorner(state);
+        return state;
     }
 
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-    }
-
-    private BlockState setIsCorner(BlockState state) {
-        boolean isCorner = state.get(NORTH_CONNECTION).isConnected() && (state.get(EAST_CONNECTION).isConnected() || state.get(WEST_CONNECTION).isConnected())
-                || state.get(SOUTH_CONNECTION).isConnected() && (state.get(EAST_CONNECTION).isConnected() || state.get(WEST_CONNECTION).isConnected());
-        return state.with(IS_CORNER, isCorner);
     }
 
     private boolean isNeighborIsConnectable(BlockPos blockPos, Direction neighborDirection, WorldAccess world) {
