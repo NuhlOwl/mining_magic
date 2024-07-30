@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  T",
+    " M ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:oak_planks"
+    },
+    "M": {
+      "item": "minecraft:bone"
+    },
+    "T": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "miningmagic:wand",
+    "count": 1
+  }
+}

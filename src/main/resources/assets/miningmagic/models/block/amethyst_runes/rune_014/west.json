@@ -1,0 +1,7 @@
+{
+  "parent": "miningmagic:block/plane_west",
+  "textures": {
+    "particle": "miningmagic:block/amethyst_runes/amethyst_rune_014",
+    "img": "miningmagic:block/amethyst_runes/amethyst_rune_014"
+  }
+}

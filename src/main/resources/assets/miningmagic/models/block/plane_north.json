@@ -1,0 +1,14 @@
+{
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "from": [ 0, 0, 15.75 ],
+      "to": [ 16, 16, 15.75 ],
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#img", "tintindex": 0 },
+        "south": { "uv": [ 16, 0, 0, 16 ], "texture": "#img", "tintindex": 0 }
+      }
+    }
+  ]
+}

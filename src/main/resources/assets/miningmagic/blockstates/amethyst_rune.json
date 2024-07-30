@@ -1,0 +1,2388 @@
+{
+  "multipart": [
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up" },
+      "when": { "rune": 0, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up", "y": 180 },
+      "when": { "rune": 0, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up", "y": 90  },
+      "when": { "rune": 0, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up", "y": 270  },
+      "when": { "rune": 0, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up" },
+      "when": { "rune": 0, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/up" },
+      "when": { "rune": 0, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down" },
+      "when": { "rune": 0, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down", "y": 180 },
+      "when": { "rune": 0, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down", "y": 90 },
+      "when": { "rune": 0, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down", "y": 270 },
+      "when": { "rune": 0, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down" },
+      "when": { "rune": 0, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/down" },
+      "when": { "rune": 0, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/north" },
+      "when": { "rune": 0,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/north" },
+      "when": { "rune": 0,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/east", "x": -90, "y": -90 },
+      "when": { "rune": 0,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/east", "x": 90, "y": -90 },
+      "when": { "rune": 0,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/north" },
+      "when": { "rune": 0,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_000/north", "x": 180, "y": 180 },
+      "when": { "rune": 0,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/south" },
+      "when": { "rune": 0, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/south" },
+      "when": { "rune": 0, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west", "x": -90, "y": -90 },
+      "when": { "rune": 0, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west", "x": 90, "y": -90 },
+      "when": { "rune": 0, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/south" },
+      "when": { "rune": 0, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/south", "x": 180, "y": 180 },
+      "when": { "rune": 0, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east", "x": 90 },
+      "when": { "rune": 0, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east", "x": 270 },
+      "when": { "rune": 0, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east" },
+      "when": { "rune": 0, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east" },
+      "when": { "rune": 0, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east" },
+      "when": { "rune": 0, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/east", "x": 180 },
+      "when": { "rune": 0, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west", "x": 90 },
+      "when": { "rune": 0, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west", "x": 270 },
+      "when": { "rune": 0, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west" },
+      "when": { "rune": 0, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west" },
+      "when": { "rune": 0, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west" },
+      "when": { "rune": 0, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_000/west", "x": 180 },
+      "when": { "rune": 0, "facing": "west", "placement": "down" }
+    },
+    
+    
+    
+    
+    
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up" },
+      "when": { "rune": 1, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up", "y": 180 },
+      "when": { "rune": 1, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up", "y": 90  },
+      "when": { "rune": 1, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up", "y": 270  },
+      "when": { "rune": 1, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up" },
+      "when": { "rune": 1, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/up" },
+      "when": { "rune": 1, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down" },
+      "when": { "rune": 1, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down", "y": 180 },
+      "when": { "rune": 1, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down", "y": 90 },
+      "when": { "rune": 1, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down", "y": 270 },
+      "when": { "rune": 1, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down" },
+      "when": { "rune": 1, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/down" },
+      "when": { "rune": 1, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/north" },
+      "when": { "rune": 1,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/north" },
+      "when": { "rune": 1,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/east", "x": -90, "y": -90 },
+      "when": { "rune": 1,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/east", "x": 90, "y": -90 },
+      "when": { "rune": 1,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/north" },
+      "when": { "rune": 1,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_001/north", "x": 180, "y": 180 },
+      "when": { "rune": 1,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/south" },
+      "when": { "rune": 1, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/south" },
+      "when": { "rune": 1, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west", "x": -90, "y": -90 },
+      "when": { "rune": 1, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west", "x": 90, "y": -90 },
+      "when": { "rune": 1, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/south" },
+      "when": { "rune": 1, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/south", "x": 180, "y": 180 },
+      "when": { "rune": 1, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east", "x": 90 },
+      "when": { "rune": 1, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east", "x": 270 },
+      "when": { "rune": 1, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east" },
+      "when": { "rune": 1, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east" },
+      "when": { "rune": 1, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east" },
+      "when": { "rune": 1, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/east", "x": 180 },
+      "when": { "rune": 1, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west", "x": 90 },
+      "when": { "rune": 1, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west", "x": 270 },
+      "when": { "rune": 1, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west" },
+      "when": { "rune": 1, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west" },
+      "when": { "rune": 1, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west" },
+      "when": { "rune": 1, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_001/west", "x": 180 },
+      "when": { "rune": 1, "facing": "west", "placement": "down" }
+    },
+    
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up" },
+      "when": { "rune": 2, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up", "y": 180 },
+      "when": { "rune": 2, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up", "y": 90  },
+      "when": { "rune": 2, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up", "y": 270  },
+      "when": { "rune": 2, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up" },
+      "when": { "rune": 2, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/up" },
+      "when": { "rune": 2, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down" },
+      "when": { "rune": 2, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down", "y": 180 },
+      "when": { "rune": 2, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down", "y": 90 },
+      "when": { "rune": 2, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down", "y": 270 },
+      "when": { "rune": 2, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down" },
+      "when": { "rune": 2, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/down" },
+      "when": { "rune": 2, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/north" },
+      "when": { "rune": 2,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/north" },
+      "when": { "rune": 2,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/east", "x": -90, "y": -90 },
+      "when": { "rune": 2,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/east", "x": 90, "y": -90 },
+      "when": { "rune": 2,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/north" },
+      "when": { "rune": 2,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_002/north", "x": 180, "y": 180 },
+      "when": { "rune": 2,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/south" },
+      "when": { "rune": 2, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/south" },
+      "when": { "rune": 2, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west", "x": -90, "y": -90 },
+      "when": { "rune": 2, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west", "x": 90, "y": -90 },
+      "when": { "rune": 2, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/south" },
+      "when": { "rune": 2, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/south", "x": 180, "y": 180 },
+      "when": { "rune": 2, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east", "x": 90 },
+      "when": { "rune": 2, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east", "x": 270 },
+      "when": { "rune": 2, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east" },
+      "when": { "rune": 2, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east" },
+      "when": { "rune": 2, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east" },
+      "when": { "rune": 2, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/east", "x": 180 },
+      "when": { "rune": 2, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west", "x": 90 },
+      "when": { "rune": 2, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west", "x": 270 },
+      "when": { "rune": 2, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west" },
+      "when": { "rune": 2, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west" },
+      "when": { "rune": 2, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west" },
+      "when": { "rune": 2, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_002/west", "x": 180 },
+      "when": { "rune": 2, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up" },
+      "when": { "rune": 3, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up", "y": 180 },
+      "when": { "rune": 3, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up", "y": 90  },
+      "when": { "rune": 3, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up", "y": 270  },
+      "when": { "rune": 3, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up" },
+      "when": { "rune": 3, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/up" },
+      "when": { "rune": 3, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down" },
+      "when": { "rune": 3, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down", "y": 180 },
+      "when": { "rune": 3, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down", "y": 90 },
+      "when": { "rune": 3, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down", "y": 270 },
+      "when": { "rune": 3, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down" },
+      "when": { "rune": 3, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/down" },
+      "when": { "rune": 3, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/north" },
+      "when": { "rune": 3,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/north" },
+      "when": { "rune": 3,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/east", "x": -90, "y": -90 },
+      "when": { "rune": 3,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/east", "x": 90, "y": -90 },
+      "when": { "rune": 3,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/north" },
+      "when": { "rune": 3,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_003/north", "x": 180, "y": 180 },
+      "when": { "rune": 3,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/south" },
+      "when": { "rune": 3, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/south" },
+      "when": { "rune": 3, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west", "x": -90, "y": -90 },
+      "when": { "rune": 3, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west", "x": 90, "y": -90 },
+      "when": { "rune": 3, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/south" },
+      "when": { "rune": 3, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/south", "x": 180, "y": 180 },
+      "when": { "rune": 3, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east", "x": 90 },
+      "when": { "rune": 3, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east", "x": 270 },
+      "when": { "rune": 3, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east" },
+      "when": { "rune": 3, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east" },
+      "when": { "rune": 3, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east" },
+      "when": { "rune": 3, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/east", "x": 180 },
+      "when": { "rune": 3, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west", "x": 90 },
+      "when": { "rune": 3, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west", "x": 270 },
+      "when": { "rune": 3, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west" },
+      "when": { "rune": 3, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west" },
+      "when": { "rune": 3, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west" },
+      "when": { "rune": 3, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_003/west", "x": 180 },
+      "when": { "rune": 3, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up" },
+      "when": { "rune": 4, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up", "y": 180 },
+      "when": { "rune": 4, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up", "y": 90  },
+      "when": { "rune": 4, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up", "y": 270  },
+      "when": { "rune": 4, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up" },
+      "when": { "rune": 4, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/up" },
+      "when": { "rune": 4, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down" },
+      "when": { "rune": 4, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down", "y": 180 },
+      "when": { "rune": 4, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down", "y": 90 },
+      "when": { "rune": 4, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down", "y": 270 },
+      "when": { "rune": 4, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down" },
+      "when": { "rune": 4, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/down" },
+      "when": { "rune": 4, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/north" },
+      "when": { "rune": 4,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/north" },
+      "when": { "rune": 4,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/east", "x": -90, "y": -90 },
+      "when": { "rune": 4,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/east", "x": 90, "y": -90 },
+      "when": { "rune": 4,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/north" },
+      "when": { "rune": 4,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_004/north", "x": 180, "y": 180 },
+      "when": { "rune": 4,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/south" },
+      "when": { "rune": 4, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/south" },
+      "when": { "rune": 4, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west", "x": -90, "y": -90 },
+      "when": { "rune": 4, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west", "x": 90, "y": -90 },
+      "when": { "rune": 4, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/south" },
+      "when": { "rune": 4, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/south", "x": 180, "y": 180 },
+      "when": { "rune": 4, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east", "x": 90 },
+      "when": { "rune": 4, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east", "x": 270 },
+      "when": { "rune": 4, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east" },
+      "when": { "rune": 4, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east" },
+      "when": { "rune": 4, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east" },
+      "when": { "rune": 4, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/east", "x": 180 },
+      "when": { "rune": 4, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west", "x": 90 },
+      "when": { "rune": 4, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west", "x": 270 },
+      "when": { "rune": 4, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west" },
+      "when": { "rune": 4, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west" },
+      "when": { "rune": 4, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west" },
+      "when": { "rune": 4, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_004/west", "x": 180 },
+      "when": { "rune": 4, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up" },
+      "when": { "rune": 5, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up", "y": 180 },
+      "when": { "rune": 5, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up", "y": 90  },
+      "when": { "rune": 5, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up", "y": 270  },
+      "when": { "rune": 5, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up" },
+      "when": { "rune": 5, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/up" },
+      "when": { "rune": 5, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down" },
+      "when": { "rune": 5, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down", "y": 180 },
+      "when": { "rune": 5, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down", "y": 90 },
+      "when": { "rune": 5, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down", "y": 270 },
+      "when": { "rune": 5, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down" },
+      "when": { "rune": 5, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/down" },
+      "when": { "rune": 5, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/north" },
+      "when": { "rune": 5,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/north" },
+      "when": { "rune": 5,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/east", "x": -90, "y": -90 },
+      "when": { "rune": 5,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/east", "x": 90, "y": -90 },
+      "when": { "rune": 5,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/north" },
+      "when": { "rune": 5,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_005/north", "x": 180, "y": 180 },
+      "when": { "rune": 5,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/south" },
+      "when": { "rune": 5, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/south" },
+      "when": { "rune": 5, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west", "x": -90, "y": -90 },
+      "when": { "rune": 5, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west", "x": 90, "y": -90 },
+      "when": { "rune": 5, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/south" },
+      "when": { "rune": 5, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/south", "x": 180, "y": 180 },
+      "when": { "rune": 5, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east", "x": 90 },
+      "when": { "rune": 5, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east", "x": 270 },
+      "when": { "rune": 5, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east" },
+      "when": { "rune": 5, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east" },
+      "when": { "rune": 5, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east" },
+      "when": { "rune": 5, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/east", "x": 180 },
+      "when": { "rune": 5, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west", "x": 90 },
+      "when": { "rune": 5, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west", "x": 270 },
+      "when": { "rune": 5, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west" },
+      "when": { "rune": 5, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west" },
+      "when": { "rune": 5, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west" },
+      "when": { "rune": 5, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_005/west", "x": 180 },
+      "when": { "rune": 5, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up" },
+      "when": { "rune": 6, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up", "y": 180 },
+      "when": { "rune": 6, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up", "y": 90  },
+      "when": { "rune": 6, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up", "y": 270  },
+      "when": { "rune": 6, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up" },
+      "when": { "rune": 6, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/up" },
+      "when": { "rune": 6, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down" },
+      "when": { "rune": 6, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down", "y": 180 },
+      "when": { "rune": 6, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down", "y": 90 },
+      "when": { "rune": 6, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down", "y": 270 },
+      "when": { "rune": 6, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down" },
+      "when": { "rune": 6, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/down" },
+      "when": { "rune": 6, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/north" },
+      "when": { "rune": 6,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/north" },
+      "when": { "rune": 6,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/east", "x": -90, "y": -90 },
+      "when": { "rune": 6,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/east", "x": 90, "y": -90 },
+      "when": { "rune": 6,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/north" },
+      "when": { "rune": 6,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_006/north", "x": 180, "y": 180 },
+      "when": { "rune": 6,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/south" },
+      "when": { "rune": 6, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/south" },
+      "when": { "rune": 6, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west", "x": -90, "y": -90 },
+      "when": { "rune": 6, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west", "x": 90, "y": -90 },
+      "when": { "rune": 6, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/south" },
+      "when": { "rune": 6, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/south", "x": 180, "y": 180 },
+      "when": { "rune": 6, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east", "x": 90 },
+      "when": { "rune": 6, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east", "x": 270 },
+      "when": { "rune": 6, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east" },
+      "when": { "rune": 6, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east" },
+      "when": { "rune": 6, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east" },
+      "when": { "rune": 6, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/east", "x": 180 },
+      "when": { "rune": 6, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west", "x": 90 },
+      "when": { "rune": 6, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west", "x": 270 },
+      "when": { "rune": 6, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west" },
+      "when": { "rune": 6, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west" },
+      "when": { "rune": 6, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west" },
+      "when": { "rune": 6, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_006/west", "x": 180 },
+      "when": { "rune": 6, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up" },
+      "when": { "rune": 7, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up", "y": 180 },
+      "when": { "rune": 7, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up", "y": 90  },
+      "when": { "rune": 7, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up", "y": 270  },
+      "when": { "rune": 7, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up" },
+      "when": { "rune": 7, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/up" },
+      "when": { "rune": 7, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down" },
+      "when": { "rune": 7, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down", "y": 180 },
+      "when": { "rune": 7, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down", "y": 90 },
+      "when": { "rune": 7, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down", "y": 270 },
+      "when": { "rune": 7, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down" },
+      "when": { "rune": 7, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/down" },
+      "when": { "rune": 7, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/north" },
+      "when": { "rune": 7,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/north" },
+      "when": { "rune": 7,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/east", "x": -90, "y": -90 },
+      "when": { "rune": 7,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/east", "x": 90, "y": -90 },
+      "when": { "rune": 7,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/north" },
+      "when": { "rune": 7,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_007/north", "x": 180, "y": 180 },
+      "when": { "rune": 7,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/south" },
+      "when": { "rune": 7, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/south" },
+      "when": { "rune": 7, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west", "x": -90, "y": -90 },
+      "when": { "rune": 7, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west", "x": 90, "y": -90 },
+      "when": { "rune": 7, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/south" },
+      "when": { "rune": 7, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/south", "x": 180, "y": 180 },
+      "when": { "rune": 7, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east", "x": 90 },
+      "when": { "rune": 7, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east", "x": 270 },
+      "when": { "rune": 7, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east" },
+      "when": { "rune": 7, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east" },
+      "when": { "rune": 7, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east" },
+      "when": { "rune": 7, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/east", "x": 180 },
+      "when": { "rune": 7, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west", "x": 90 },
+      "when": { "rune": 7, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west", "x": 270 },
+      "when": { "rune": 7, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west" },
+      "when": { "rune": 7, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west" },
+      "when": { "rune": 7, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west" },
+      "when": { "rune": 7, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_007/west", "x": 180 },
+      "when": { "rune": 7, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up" },
+      "when": { "rune": 8, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up", "y": 180 },
+      "when": { "rune": 8, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up", "y": 90  },
+      "when": { "rune": 8, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up", "y": 270  },
+      "when": { "rune": 8, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up" },
+      "when": { "rune": 8, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/up" },
+      "when": { "rune": 8, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down" },
+      "when": { "rune": 8, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down", "y": 180 },
+      "when": { "rune": 8, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down", "y": 90 },
+      "when": { "rune": 8, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down", "y": 270 },
+      "when": { "rune": 8, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down" },
+      "when": { "rune": 8, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/down" },
+      "when": { "rune": 8, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/north" },
+      "when": { "rune": 8,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/north" },
+      "when": { "rune": 8,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/east", "x": -90, "y": -90 },
+      "when": { "rune": 8,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/east", "x": 90, "y": -90 },
+      "when": { "rune": 8,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/north" },
+      "when": { "rune": 8,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_008/north", "x": 180, "y": 180 },
+      "when": { "rune": 8,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/south" },
+      "when": { "rune": 8, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/south" },
+      "when": { "rune": 8, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west", "x": -90, "y": -90 },
+      "when": { "rune": 8, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west", "x": 90, "y": -90 },
+      "when": { "rune": 8, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/south" },
+      "when": { "rune": 8, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/south", "x": 180, "y": 180 },
+      "when": { "rune": 8, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east", "x": 90 },
+      "when": { "rune": 8, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east", "x": 270 },
+      "when": { "rune": 8, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east" },
+      "when": { "rune": 8, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east" },
+      "when": { "rune": 8, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east" },
+      "when": { "rune": 8, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/east", "x": 180 },
+      "when": { "rune": 8, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west", "x": 90 },
+      "when": { "rune": 8, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west", "x": 270 },
+      "when": { "rune": 8, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west" },
+      "when": { "rune": 8, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west" },
+      "when": { "rune": 8, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west" },
+      "when": { "rune": 8, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_008/west", "x": 180 },
+      "when": { "rune": 8, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up" },
+      "when": { "rune": 9, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up", "y": 180 },
+      "when": { "rune": 9, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up", "y": 90  },
+      "when": { "rune": 9, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up", "y": 270  },
+      "when": { "rune": 9, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up" },
+      "when": { "rune": 9, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/up" },
+      "when": { "rune": 9, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down" },
+      "when": { "rune": 9, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down", "y": 180 },
+      "when": { "rune": 9, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down", "y": 90 },
+      "when": { "rune": 9, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down", "y": 270 },
+      "when": { "rune": 9, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down" },
+      "when": { "rune": 9, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/down" },
+      "when": { "rune": 9, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/north" },
+      "when": { "rune": 9,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/north" },
+      "when": { "rune": 9,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/east", "x": -90, "y": -90 },
+      "when": { "rune": 9,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/east", "x": 90, "y": -90 },
+      "when": { "rune": 9,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/north" },
+      "when": { "rune": 9,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_009/north", "x": 180, "y": 180 },
+      "when": { "rune": 9,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/south" },
+      "when": { "rune": 9, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/south" },
+      "when": { "rune": 9, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west", "x": -90, "y": -90 },
+      "when": { "rune": 9, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west", "x": 90, "y": -90 },
+      "when": { "rune": 9, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/south" },
+      "when": { "rune": 9, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/south", "x": 180, "y": 180 },
+      "when": { "rune": 9, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east", "x": 90 },
+      "when": { "rune": 9, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east", "x": 270 },
+      "when": { "rune": 9, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east" },
+      "when": { "rune": 9, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east" },
+      "when": { "rune": 9, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east" },
+      "when": { "rune": 9, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/east", "x": 180 },
+      "when": { "rune": 9, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west", "x": 90 },
+      "when": { "rune": 9, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west", "x": 270 },
+      "when": { "rune": 9, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west" },
+      "when": { "rune": 9, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west" },
+      "when": { "rune": 9, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west" },
+      "when": { "rune": 9, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_009/west", "x": 180 },
+      "when": { "rune": 9, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up" },
+      "when": { "rune": 10, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up", "y": 180 },
+      "when": { "rune": 10, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up", "y": 90  },
+      "when": { "rune": 10, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up", "y": 270  },
+      "when": { "rune": 10, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up" },
+      "when": { "rune": 10, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/up" },
+      "when": { "rune": 10, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down" },
+      "when": { "rune": 10, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down", "y": 180 },
+      "when": { "rune": 10, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down", "y": 90 },
+      "when": { "rune": 10, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down", "y": 270 },
+      "when": { "rune": 10, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down" },
+      "when": { "rune": 10, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/down" },
+      "when": { "rune": 10, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/north" },
+      "when": { "rune": 10,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/north" },
+      "when": { "rune": 10,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/east", "x": -90, "y": -90 },
+      "when": { "rune": 10,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/east", "x": 90, "y": -90 },
+      "when": { "rune": 10,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/north" },
+      "when": { "rune": 10,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_010/north", "x": 180, "y": 180 },
+      "when": { "rune": 10,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/south" },
+      "when": { "rune": 10, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/south" },
+      "when": { "rune": 10, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west", "x": -90, "y": -90 },
+      "when": { "rune": 10, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west", "x": 90, "y": -90 },
+      "when": { "rune": 10, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/south" },
+      "when": { "rune": 10, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/south", "x": 180, "y": 180 },
+      "when": { "rune": 10, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east", "x": 90 },
+      "when": { "rune": 10, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east", "x": 270 },
+      "when": { "rune": 10, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east" },
+      "when": { "rune": 10, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east" },
+      "when": { "rune": 10, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east" },
+      "when": { "rune": 10, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/east", "x": 180 },
+      "when": { "rune": 10, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west", "x": 90 },
+      "when": { "rune": 10, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west", "x": 270 },
+      "when": { "rune": 10, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west" },
+      "when": { "rune": 10, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west" },
+      "when": { "rune": 10, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west" },
+      "when": { "rune": 10, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_010/west", "x": 180 },
+      "when": { "rune": 10, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up" },
+      "when": { "rune": 11, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up", "y": 180 },
+      "when": { "rune": 11, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up", "y": 90  },
+      "when": { "rune": 11, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up", "y": 270  },
+      "when": { "rune": 11, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up" },
+      "when": { "rune": 11, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/up" },
+      "when": { "rune": 11, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down" },
+      "when": { "rune": 11, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down", "y": 180 },
+      "when": { "rune": 11, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down", "y": 90 },
+      "when": { "rune": 11, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down", "y": 270 },
+      "when": { "rune": 11, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down" },
+      "when": { "rune": 11, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/down" },
+      "when": { "rune": 11, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/north" },
+      "when": { "rune": 11,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/north" },
+      "when": { "rune": 11,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/east", "x": -90, "y": -90 },
+      "when": { "rune": 11,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/east", "x": 90, "y": -90 },
+      "when": { "rune": 11,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/north" },
+      "when": { "rune": 11,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_011/north", "x": 180, "y": 180 },
+      "when": { "rune": 11,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/south" },
+      "when": { "rune": 11, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/south" },
+      "when": { "rune": 11, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west", "x": -90, "y": -90 },
+      "when": { "rune": 11, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west", "x": 90, "y": -90 },
+      "when": { "rune": 11, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/south" },
+      "when": { "rune": 11, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/south", "x": 180, "y": 180 },
+      "when": { "rune": 11, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east", "x": 90 },
+      "when": { "rune": 11, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east", "x": 270 },
+      "when": { "rune": 11, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east" },
+      "when": { "rune": 11, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east" },
+      "when": { "rune": 11, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east" },
+      "when": { "rune": 11, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/east", "x": 180 },
+      "when": { "rune": 11, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west", "x": 90 },
+      "when": { "rune": 11, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west", "x": 270 },
+      "when": { "rune": 11, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west" },
+      "when": { "rune": 11, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west" },
+      "when": { "rune": 11, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west" },
+      "when": { "rune": 11, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_011/west", "x": 180 },
+      "when": { "rune": 11, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up" },
+      "when": { "rune": 12, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up", "y": 180 },
+      "when": { "rune": 12, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up", "y": 90  },
+      "when": { "rune": 12, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up", "y": 270  },
+      "when": { "rune": 12, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up" },
+      "when": { "rune": 12, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/up" },
+      "when": { "rune": 12, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down" },
+      "when": { "rune": 12, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down", "y": 180 },
+      "when": { "rune": 12, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down", "y": 90 },
+      "when": { "rune": 12, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down", "y": 270 },
+      "when": { "rune": 12, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down" },
+      "when": { "rune": 12, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/down" },
+      "when": { "rune": 12, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/north" },
+      "when": { "rune": 12,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/north" },
+      "when": { "rune": 12,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/east", "x": -90, "y": -90 },
+      "when": { "rune": 12,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/east", "x": 90, "y": -90 },
+      "when": { "rune": 12,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/north" },
+      "when": { "rune": 12,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_012/north", "x": 180, "y": 180 },
+      "when": { "rune": 12,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/south" },
+      "when": { "rune": 12, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/south" },
+      "when": { "rune": 12, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west", "x": -90, "y": -90 },
+      "when": { "rune": 12, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west", "x": 90, "y": -90 },
+      "when": { "rune": 12, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/south" },
+      "when": { "rune": 12, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/south", "x": 180, "y": 180 },
+      "when": { "rune": 12, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east", "x": 90 },
+      "when": { "rune": 12, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east", "x": 270 },
+      "when": { "rune": 12, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east" },
+      "when": { "rune": 12, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east" },
+      "when": { "rune": 12, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east" },
+      "when": { "rune": 12, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/east", "x": 180 },
+      "when": { "rune": 12, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west", "x": 90 },
+      "when": { "rune": 12, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west", "x": 270 },
+      "when": { "rune": 12, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west" },
+      "when": { "rune": 12, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west" },
+      "when": { "rune": 12, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west" },
+      "when": { "rune": 12, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_012/west", "x": 180 },
+      "when": { "rune": 12, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up" },
+      "when": { "rune": 13, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up", "y": 180 },
+      "when": { "rune": 13, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up", "y": 90  },
+      "when": { "rune": 13, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up", "y": 270  },
+      "when": { "rune": 13, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up" },
+      "when": { "rune": 13, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/up" },
+      "when": { "rune": 13, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down" },
+      "when": { "rune": 13, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down", "y": 180 },
+      "when": { "rune": 13, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down", "y": 90 },
+      "when": { "rune": 13, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down", "y": 270 },
+      "when": { "rune": 13, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down" },
+      "when": { "rune": 13, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/down" },
+      "when": { "rune": 13, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/north" },
+      "when": { "rune": 13,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/north" },
+      "when": { "rune": 13,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/east", "x": -90, "y": -90 },
+      "when": { "rune": 13,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/east", "x": 90, "y": -90 },
+      "when": { "rune": 13,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/north" },
+      "when": { "rune": 13,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_013/north", "x": 180, "y": 180 },
+      "when": { "rune": 13,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/south" },
+      "when": { "rune": 13, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/south" },
+      "when": { "rune": 13, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west", "x": -90, "y": -90 },
+      "when": { "rune": 13, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west", "x": 90, "y": -90 },
+      "when": { "rune": 13, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/south" },
+      "when": { "rune": 13, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/south", "x": 180, "y": 180 },
+      "when": { "rune": 13, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east", "x": 90 },
+      "when": { "rune": 13, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east", "x": 270 },
+      "when": { "rune": 13, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east" },
+      "when": { "rune": 13, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east" },
+      "when": { "rune": 13, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east" },
+      "when": { "rune": 13, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/east", "x": 180 },
+      "when": { "rune": 13, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west", "x": 90 },
+      "when": { "rune": 13, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west", "x": 270 },
+      "when": { "rune": 13, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west" },
+      "when": { "rune": 13, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west" },
+      "when": { "rune": 13, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west" },
+      "when": { "rune": 13, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_013/west", "x": 180 },
+      "when": { "rune": 13, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up" },
+      "when": { "rune": 14, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up", "y": 180 },
+      "when": { "rune": 14, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up", "y": 90  },
+      "when": { "rune": 14, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up", "y": 270  },
+      "when": { "rune": 14, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up" },
+      "when": { "rune": 14, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/up" },
+      "when": { "rune": 14, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down" },
+      "when": { "rune": 14, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down", "y": 180 },
+      "when": { "rune": 14, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down", "y": 90 },
+      "when": { "rune": 14, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down", "y": 270 },
+      "when": { "rune": 14, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down" },
+      "when": { "rune": 14, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/down" },
+      "when": { "rune": 14, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/north" },
+      "when": { "rune": 14,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/north" },
+      "when": { "rune": 14,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/east", "x": -90, "y": -90 },
+      "when": { "rune": 14,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/east", "x": 90, "y": -90 },
+      "when": { "rune": 14,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/north" },
+      "when": { "rune": 14,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_014/north", "x": 180, "y": 180 },
+      "when": { "rune": 14,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/south" },
+      "when": { "rune": 14, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/south" },
+      "when": { "rune": 14, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west", "x": -90, "y": -90 },
+      "when": { "rune": 14, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west", "x": 90, "y": -90 },
+      "when": { "rune": 14, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/south" },
+      "when": { "rune": 14, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/south", "x": 180, "y": 180 },
+      "when": { "rune": 14, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east", "x": 90 },
+      "when": { "rune": 14, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east", "x": 270 },
+      "when": { "rune": 14, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east" },
+      "when": { "rune": 14, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east" },
+      "when": { "rune": 14, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east" },
+      "when": { "rune": 14, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/east", "x": 180 },
+      "when": { "rune": 14, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west", "x": 90 },
+      "when": { "rune": 14, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west", "x": 270 },
+      "when": { "rune": 14, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west" },
+      "when": { "rune": 14, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west" },
+      "when": { "rune": 14, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west" },
+      "when": { "rune": 14, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_014/west", "x": 180 },
+      "when": { "rune": 14, "facing": "west", "placement": "down" }
+    },
+
+
+
+
+   
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up" },
+      "when": { "rune": 15, "facing": "up", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up", "y": 180 },
+      "when": { "rune": 15, "facing": "up", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up", "y": 90  },
+      "when": { "rune": 15, "facing": "up", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up", "y": 270  },
+      "when": { "rune": 15, "facing": "up", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up" },
+      "when": { "rune": 15, "facing": "up", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/up" },
+      "when": { "rune": 15, "facing": "up", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down" },
+      "when": { "rune": 15, "facing": "down", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down", "y": 180 },
+      "when": { "rune": 15, "facing": "down", "placement": "south"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down", "y": 90 },
+      "when": { "rune": 15, "facing": "down", "placement": "east"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down", "y": 270 },
+      "when": { "rune": 15, "facing": "down", "placement": "west"  }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down" },
+      "when": { "rune": 15, "facing": "down", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/down" },
+      "when": { "rune": 15, "facing": "down", "placement": "down" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/north" },
+      "when": { "rune": 15,  "facing": "north", "placement": "north" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/north" },
+      "when": { "rune": 15,  "facing": "north", "placement": "south" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/east", "x": -90, "y": -90 },
+      "when": { "rune": 15,  "facing": "north", "placement": "east" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/east", "x": 90, "y": -90 },
+      "when": { "rune": 15,  "facing": "north", "placement": "west" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/north" },
+      "when": { "rune": 15,  "facing": "north", "placement": "up" }
+    },
+    {
+      "apply": {  "model": "miningmagic:block/amethyst_runes/rune_015/north", "x": 180, "y": 180 },
+      "when": { "rune": 15,  "facing": "north", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/south" },
+      "when": { "rune": 15, "facing": "south", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/south" },
+      "when": { "rune": 15, "facing": "south", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west", "x": -90, "y": -90 },
+      "when": { "rune": 15, "facing": "south", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west", "x": 90, "y": -90 },
+      "when": { "rune": 15, "facing": "south", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/south" },
+      "when": { "rune": 15, "facing": "south", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/south", "x": 180, "y": 180 },
+      "when": { "rune": 15, "facing": "south", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east", "x": 90 },
+      "when": { "rune": 15, "facing": "east", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east", "x": 270 },
+      "when": { "rune": 15, "facing": "east", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east" },
+      "when": { "rune": 15, "facing": "east", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east" },
+      "when": { "rune": 15, "facing": "east", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east" },
+      "when": { "rune": 15, "facing": "east", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/east", "x": 180 },
+      "when": { "rune": 15, "facing": "east", "placement": "down" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west", "x": 90 },
+      "when": { "rune": 15, "facing": "west", "placement": "north" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west", "x": 270 },
+      "when": { "rune": 15, "facing": "west", "placement": "south" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west" },
+      "when": { "rune": 15, "facing": "west", "placement": "east" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west" },
+      "when": { "rune": 15, "facing": "west", "placement": "west" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west" },
+      "when": { "rune": 15, "facing": "west", "placement": "up" }
+    },
+    {
+      "apply": { "model": "miningmagic:block/amethyst_runes/rune_015/west", "x": 180 },
+      "when": { "rune": 15, "facing": "west", "placement": "down" }
+    }
+
+
+
+
+    
+  ]
+}
