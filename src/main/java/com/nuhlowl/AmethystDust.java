@@ -27,7 +27,6 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -222,12 +221,14 @@ public class AmethystDust extends Block {
         List<Direction> neighbors = getDirectionOrderForFacing(ctx.getSide());
 
         BlockState state = super.getPlacementState(ctx);
+        if (state == null) {
+            state = getDefaultState();
+        }
 
         boolean northIsConnectable = isNeighborIsConnectable(ctx.getBlockPos(), neighbors.get(0), ctx.getWorld());
         boolean southIsConnectable = isNeighborIsConnectable(ctx.getBlockPos(), neighbors.get(1), ctx.getWorld());
         boolean eastIsConnectable = isNeighborIsConnectable(ctx.getBlockPos(), neighbors.get(2), ctx.getWorld());
         boolean westIsConnectable = isNeighborIsConnectable(ctx.getBlockPos(), neighbors.get(3), ctx.getWorld());
-
 
         if (northIsConnectable && eastIsConnectable) {
             state = state.with(NORTH_TO_EAST_CONNECTION, DustConnection.CONNECTED);
@@ -262,22 +263,14 @@ public class AmethystDust extends Block {
         double oneVoxel = 1.0 / 16.0;
         double lastVoxel = 1.0 - oneVoxel;
 
-        switch (dir) {
-            case UP:
-                return VoxelShapes.cuboid(oneVoxel, 0, oneVoxel, lastVoxel, oneVoxel, lastVoxel);
-            case DOWN:
-                return VoxelShapes.cuboid(oneVoxel, lastVoxel, oneVoxel, lastVoxel, 1.0, lastVoxel);
-            case NORTH:
-                return VoxelShapes.cuboid(oneVoxel, oneVoxel, lastVoxel, lastVoxel, lastVoxel, 1.0);
-            case SOUTH:
-                return VoxelShapes.cuboid(oneVoxel, oneVoxel, 0, lastVoxel, lastVoxel, oneVoxel);
-            case EAST:
-                return VoxelShapes.cuboid(0, oneVoxel, oneVoxel, oneVoxel, lastVoxel, lastVoxel);
-            case WEST:
-                return VoxelShapes.cuboid(lastVoxel, oneVoxel, oneVoxel, 1.0, lastVoxel, lastVoxel);
-        }
-
-        return super.getOutlineShape(state, world, pos, context);
+        return switch (dir) {
+            case UP -> VoxelShapes.cuboid(oneVoxel, 0, oneVoxel, lastVoxel, oneVoxel, lastVoxel);
+            case DOWN -> VoxelShapes.cuboid(oneVoxel, lastVoxel, oneVoxel, lastVoxel, 1.0, lastVoxel);
+            case NORTH -> VoxelShapes.cuboid(oneVoxel, oneVoxel, lastVoxel, lastVoxel, lastVoxel, 1.0);
+            case SOUTH -> VoxelShapes.cuboid(oneVoxel, oneVoxel, 0, lastVoxel, lastVoxel, oneVoxel);
+            case EAST -> VoxelShapes.cuboid(0, oneVoxel, oneVoxel, oneVoxel, lastVoxel, lastVoxel);
+            case WEST -> VoxelShapes.cuboid(lastVoxel, oneVoxel, oneVoxel, 1.0, lastVoxel, lastVoxel);
+        };
     }
 
     @Override
@@ -286,7 +279,6 @@ public class AmethystDust extends Block {
         ItemStack itemStack = player.getStackInHand(hand);
         Direction dustFacing = state.get(FACING);
 
-
         Vec3d hitPos = hit.getPos();
         Vec3d truncated = new Vec3d((int) hitPos.x, (int) hitPos.y, (int) hitPos.z);
         Vec3d signs = new Vec3d(hitPos.x / Math.abs(hitPos.x), hitPos.y / Math.abs(hitPos.y), hitPos.z / Math.abs(hitPos.z));
@@ -294,17 +286,11 @@ public class AmethystDust extends Block {
         Vec3d blockMid = truncated.add(new Vec3d(.5, .5, .5).multiply(signs));
         hitPos = hitPos.subtract(blockMid);
 
-        switch (dustFacing.getAxis()) {
-            case X:
-                hitPos = new Vec3d(0, hitPos.y, hitPos.z);
-                break;
-            case Y:
-                hitPos = new Vec3d(hitPos.x, 0, hitPos.z);
-                break;
-            case Z:
-                hitPos = new Vec3d(hitPos.x, hitPos.y, 0);
-                break;
-        }
+        hitPos = switch (dustFacing.getAxis()) {
+            case X -> new Vec3d(0, hitPos.y, hitPos.z);
+            case Y -> new Vec3d(hitPos.x, 0, hitPos.z);
+            case Z -> new Vec3d(hitPos.x, hitPos.y, 0);
+        };
 
         Direction closestDir = Direction.UP;
         if (hitPos.length() < CENTER_HIT_RADIUS) {
