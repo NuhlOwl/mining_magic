@@ -26,9 +26,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AmethystDust extends Block {
     public static final double CENTER_HIT_RADIUS = .1;
@@ -48,6 +50,8 @@ public class AmethystDust extends Block {
     public static final EnumProperty<DustConnection> SOUTH_TO_WEST_CONNECTION = EnumProperty.of("south_to_west", DustConnection.class);
     public static final EnumProperty<DustConnection> EAST_TO_WEST_CONNECTION = EnumProperty.of("east_to_west", DustConnection.class);
     public static final EnumProperty<DustConnection> NORTH_TO_SOUTH_CONNECTION = EnumProperty.of("north_to_south", DustConnection.class);
+
+    public static final BooleanProperty CUSTOM_CONNECTIONS = BooleanProperty.of("custom_connections");
 
     private static final Map<Direction, Map<Direction, EnumProperty<DustConnection>>> FACING_NEIGHBOR_TO_CONNECTION = ImmutableMap.of(
             Direction.UP, ImmutableMap.of(Direction.NORTH, NORTH_CONNECTION, Direction.SOUTH, SOUTH_CONNECTION, Direction.EAST, EAST_CONNECTION, Direction.WEST, WEST_CONNECTION),
@@ -208,6 +212,7 @@ public class AmethystDust extends Block {
                 .with(SOUTH_TO_WEST_CONNECTION, DustConnection.NONE)
                 .with(EAST_TO_WEST_CONNECTION, DustConnection.NONE)
                 .with(NORTH_TO_SOUTH_CONNECTION, DustConnection.NONE)
+                .with(CUSTOM_CONNECTIONS, false)
         );
     }
 
@@ -229,7 +234,8 @@ public class AmethystDust extends Block {
                 .add(SOUTH_TO_EAST_CONNECTION)
                 .add(SOUTH_TO_WEST_CONNECTION)
                 .add(EAST_TO_WEST_CONNECTION)
-                .add(NORTH_TO_SOUTH_CONNECTION);
+                .add(NORTH_TO_SOUTH_CONNECTION)
+                .add(CUSTOM_CONNECTIONS);
     }
 
     @Nullable
@@ -287,7 +293,7 @@ public class AmethystDust extends Block {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
-        double oneVoxel = 1.0/16.0;
+        double oneVoxel = 1.0 / 16.0;
         double lastVoxel = 1.0 - oneVoxel;
 
         switch (dir) {
@@ -314,56 +320,141 @@ public class AmethystDust extends Block {
         ItemStack itemStack = player.getStackInHand(hand);
         Direction dustFacing = state.get(FACING);
 
-        if (itemStack.isOf(MiningMagic.WAND)) {
-            world.removeBlock(pos, false);
 
+        Vec3d hitPos = hit.getPos();
+        Vec3d truncated = new Vec3d((int) hitPos.x, (int) hitPos.y, (int) hitPos.z);
+        Vec3d signs = new Vec3d(hitPos.x / Math.abs(hitPos.x), hitPos.y / Math.abs(hitPos.y), hitPos.z / Math.abs(hitPos.z));
 
-            Vec3d hitPos = hit.getPos();
-            Vec3d truncated = new Vec3d((int) hitPos.x, (int) hitPos.y, (int) hitPos.z);
-            Vec3d signs = new Vec3d(hitPos.x / Math.abs(hitPos.x), hitPos.y / Math.abs(hitPos.y), hitPos.z / Math.abs(hitPos.z));
+        Vec3d blockMid = truncated.add(new Vec3d(.5, .5, .5).multiply(signs));
+        hitPos = hitPos.subtract(blockMid);
 
-            Vec3d blockMid = truncated.add(new Vec3d(.5, .5, .5).multiply(signs));
-            hitPos = hitPos.subtract(blockMid);
+        switch (dustFacing.getAxis()) {
+            case X:
+                hitPos = new Vec3d(0, hitPos.y, hitPos.z);
+                break;
+            case Y:
+                hitPos = new Vec3d(hitPos.x, 0, hitPos.z);
+                break;
+            case Z:
+                hitPos = new Vec3d(hitPos.x, hitPos.y, 0);
+                break;
+        }
 
-            switch (dustFacing.getAxis()) {
-                case X:
-                    hitPos = new Vec3d(0, hitPos.y, hitPos.z);
-                    break;
-                case Y:
-                    hitPos = new Vec3d(hitPos.x, 0, hitPos.z);
-                    break;
-                case Z:
-                    hitPos = new Vec3d(hitPos.x, hitPos.y, 0);
-                    break;
-            }
+        Direction closestDir = Direction.UP;
+        if (hitPos.length() < CENTER_HIT_RADIUS) {
+            closestDir = dustFacing;
+        } else {
+            double closestDistance = Double.MAX_VALUE;
 
-            Direction closestDir = Direction.UP;
-            if (hitPos.length() < CENTER_HIT_RADIUS) {
-                closestDir = dustFacing;
-            } else {
-                double closestDistance = Double.MAX_VALUE;
-
-                for (Direction dir : Direction.values()) {
-                    double dif = Vec3d.of(dir.getVector()).subtract(hitPos).length();
-                    if (dif < closestDistance) {
-                        closestDir = dir;
-                        closestDistance = dif;
-                    }
+            for (Direction dir : Direction.values()) {
+                double dif = Vec3d.of(dir.getVector()).subtract(hitPos).length();
+                if (dif < closestDistance) {
+                    closestDir = dir;
+                    closestDistance = dif;
                 }
             }
+        }
+
+        if (itemStack.isOf(MiningMagic.WAND)) {
+            world.removeBlock(pos, false);
 
             BlockState runeState = MiningMagic.AMETHYST_RUNE.getDefaultState()
                     .with(AmethystRune.FACING, dustFacing)
                     .with(AmethystRune.PLACEMENT, closestDir);
             world.setBlockState(pos, runeState);
+        } else {
+            if (!isNeighborIsConnectable(pos, closestDir, world)) {
+                // no connection on clicked side
+                return ActionResult.FAIL;
+            }
+
+            List<Pair<Direction, EnumProperty<DustConnection>>> possibleConnections = FACING_NEIGHBOR_TO_POSSIBLE_CONNECTIONS.get(dustFacing).get(closestDir);
+            if (possibleConnections == null) {
+                // catch any strange clicks that result in an invalid facing-direction combination
+                return ActionResult.SUCCESS_NO_ITEM_USED;
+            }
+
+            // created fixed combination order
+            List<List<Pair<Direction, EnumProperty<DustConnection>>>> combinations = List.of(
+                    List.of(
+                            possibleConnections.get(0),
+                            possibleConnections.get(1),
+                            possibleConnections.get(2)
+                    ),
+                    List.of(
+                            possibleConnections.get(0),
+                            possibleConnections.get(1)
+                    ),
+                    List.of(
+                            possibleConnections.get(0),
+                            possibleConnections.get(2)
+                    ),
+                    List.of(
+                            possibleConnections.get(1),
+                            possibleConnections.get(2)
+                    ),
+                    List.of(
+                            possibleConnections.get(0)
+                    ),
+                    List.of(
+                            possibleConnections.get(1)
+                    ),
+                    List.of(
+                            possibleConnections.get(2)
+                    )
+            );
+
+            List<List<Pair<Direction, EnumProperty<DustConnection>>>> available = combinations.stream()
+                    .filter(combo -> combo.stream().allMatch(item -> isNeighborIsConnectable(pos, item.getLeft(), world)))
+                    .collect(Collectors.toList());
+
+            available.add(List.of());
+
+            BlockState finalState = state;
+            int current = available.stream()
+                    .filter(combo -> combo.stream().allMatch(item -> finalState.get(item.getRight()).isConnected()))
+                    .findFirst()
+                    .map(available::indexOf)
+                    .orElse(0);
+            MiningMagic.LOGGER.info("available {}", available.size());
+
+            current += 1;
+            if (current >= available.size()) {
+                current = 0;
+            }
+            MiningMagic.LOGGER.info("current {}", current);
+
+            List<Pair<Direction, EnumProperty<DustConnection>>> next = available.get(current);
+            List<Pair<Direction, EnumProperty<DustConnection>>> toDisconnect = new ArrayList<>() {{
+                add(possibleConnections.get(0));
+                add(possibleConnections.get(1));
+                add(possibleConnections.get(2));
+            }};
+
+            for (Pair<Direction, EnumProperty<DustConnection>> pair : next) {
+                MiningMagic.LOGGER.info("connecting {} to {}", closestDir, pair.getLeft());
+                state = state.with(pair.getRight(), DustConnection.CONNECTED);
+                toDisconnect.remove(pair);
+            }
+
+            for (Pair<Direction, EnumProperty<DustConnection>> pair : toDisconnect) {
+                MiningMagic.LOGGER.info("disconnecting {} to {}", closestDir, pair.getLeft());
+                state = state.with(pair.getRight(), DustConnection.NONE);
+            }
+
+            world.setBlockState(pos, state.with(CUSTOM_CONNECTIONS, true));
         }
         return ActionResult.SUCCESS;
     }
 
 
-
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(CUSTOM_CONNECTIONS)) {
+            // don't auto connect customized connections
+            return state;
+        }
+
         Direction facing = state.get(FACING);
         boolean lookingToConnect = neighborState.isOf(MiningMagic.AMETHYST_DUST_BLOCK);
 
