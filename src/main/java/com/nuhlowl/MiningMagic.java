@@ -2,6 +2,7 @@ package com.nuhlowl;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.piston.PistonBehavior;
@@ -38,7 +39,10 @@ public class MiningMagic implements ModInitializer {
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
 
-        LOGGER.info("Hello Fabric world!");
+        PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, entity) -> {
+//            LOGGER.info("block break");
+            return true;
+        });
     }
 
     public static <T extends Item> T registerItem(T item, String id) {
