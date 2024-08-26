@@ -98,21 +98,12 @@
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/up", "y": 0 },
       "when": { "facing": "up", "south_to_west": "connected" }
     },
-
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/up" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/up" },
       "when": { "facing": "up", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/up", "y": 180 },
-      "when": { "facing": "up", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/up", "y": 90 },
-      "when": { "facing": "up", "east_to_west": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/up", "y": -90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/up", "y": 90 },
       "when": { "facing": "up", "east_to_west": "connected" }
     },
 
@@ -133,21 +124,12 @@
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/down", "y": 90 },
       "when": { "facing": "down", "south_to_west": "connected" }
     },
-
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/down" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/down" },
       "when": { "facing": "down", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/down", "y": 180 },
-      "when": { "facing": "down", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/down", "y": 90 },
-      "when": { "facing": "down", "east_to_west": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/down", "y": -90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/down", "y": 90 },
       "when": { "facing": "down", "east_to_west": "connected" }
     },
 
@@ -168,21 +150,12 @@
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/north", "x": 0 },
       "when": { "facing": "north", "south_to_west": "connected" }
     },
-
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/north" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/north" },
       "when": { "facing": "north", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/north", "x": 180, "y": 180 },
-      "when": { "facing": "north", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east", "x": 90, "y": -90 },
-      "when": { "facing": "north", "east_to_west": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east", "x": -90, "y": -90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/east", "x": 90, "y": -90 },
       "when": { "facing": "north", "east_to_west": "connected" }
     },
 
@@ -205,19 +178,11 @@
     },
 
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/south" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/south" },
       "when": { "facing": "south", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/south", "x": 180, "y": 180 },
-      "when": { "facing": "south", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west", "x": -90, "y": -90 },
-      "when": { "facing": "south", "east_to_west": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west", "x": 90, "y": -90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/west", "x": -90, "y": -90 },
       "when": { "facing": "south", "east_to_west": "connected" }
     },
 
@@ -238,24 +203,14 @@
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/east", "x": 0 },
       "when": { "facing": "east", "south_to_west": "connected" }
     },
-
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/east" },
       "when": { "facing": "east", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east", "x": 180 },
-      "when": { "facing": "east", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east", "x": 90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/east", "x": 90 },
       "when": { "facing": "east", "east_to_west": "connected" }
     },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/east", "x": -90 },
-      "when": { "facing": "east", "east_to_west": "connected" }
-    },
-
 
     {
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/west", "x": 180 },
@@ -273,21 +228,12 @@
       "apply": { "model": "miningmagic:block/amethyst_runes/dust_corner/west", "x": 0 },
       "when": { "facing": "west", "south_to_west": "connected" }
     },
-
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west" },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/west" },
       "when": { "facing": "west", "north_to_south": "connected" }
     },
     {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west", "x": 180 },
-      "when": { "facing": "west", "north_to_south": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west", "x": 90 },
-      "when": { "facing": "west", "east_to_west": "connected" }
-    },
-    {
-      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line_part/west", "x": -90 },
+      "apply": { "model": "miningmagic:block/amethyst_runes/dust_line/west", "x": 90 },
       "when": { "facing": "west", "east_to_west": "connected" }
     }
   ]
