@@ -3,13 +3,12 @@
 	"id": "miningmagic",
 	"version": "${version}",
 	"name": "MiningMagic",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Magic in survival Minecraft.",
 	"authors": [
-		"Me!"
+		"NuhlOwl"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/NuhlOwl/mining_magic"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/miningmagic/icon.png",
