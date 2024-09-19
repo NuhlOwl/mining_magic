@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "miningmagic:block/log_rack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "miningmagic:block/log_rack"
+    },
+    "facing=south": {
+      "model": "miningmagic:block/log_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "miningmagic:block/log_rack",
+      "y": 270
+    }
+  }
+}

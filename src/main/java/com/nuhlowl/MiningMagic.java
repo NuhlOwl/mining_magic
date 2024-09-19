@@ -1,5 +1,6 @@
 package com.nuhlowl;
 
+import com.nuhlowl.villagers.Jobs;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -38,6 +39,8 @@ public class MiningMagic implements ModInitializer {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
+
+        Jobs.init();
 
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, entity) -> {
 //            LOGGER.info("block break");

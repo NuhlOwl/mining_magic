@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "miningmagic:block/loot_crate",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "miningmagic:block/loot_crate"
+    },
+    "facing=south": {
+      "model": "miningmagic:block/loot_crate",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "miningmagic:block/loot_crate",
+      "y": 270
+    }
+  }
+}
