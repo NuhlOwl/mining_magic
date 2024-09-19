@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "miningmagic:prospector",
+    "miningmagic:lumberjack",
+    "miningmagic:adventurer"
+  ]
+}

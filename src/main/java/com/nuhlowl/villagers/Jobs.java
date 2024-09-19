@@ -13,7 +13,9 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.minecraft.world.poi.PointOfInterestTypes;
 
@@ -56,22 +58,42 @@ public class Jobs {
             true
     );
 
+    public static final VillagerProfession PROSPECTOR_PROFESSION = registerProfession("prospector", PROSPECTOR);
+    public static final VillagerProfession LUMBERJACK_PROFESSION = registerProfession("lumberjack", LUMBERJACK);
+    public static final VillagerProfession ADVENTURER_PROFESSION = registerProfession("adventurer", ADVENTURER);
+
     public static void init() {
-        register(PROSPECTOR, getStatesOfBlock(SLUICE_BLOCK), 1, 1);
-        register(LUMBERJACK, getStatesOfBlock(LOG_RACK_BLOCK), 1, 1);
-        register(ADVENTURER, getStatesOfBlock(LOOT_CRATE_BLOCK), 1, 1);
+        registerPOIType(PROSPECTOR, getStatesOfBlock(SLUICE_BLOCK), 1, 1);
+        registerPOIType(LUMBERJACK, getStatesOfBlock(LOG_RACK_BLOCK), 1, 1);
+        registerPOIType(ADVENTURER, getStatesOfBlock(LOOT_CRATE_BLOCK), 1, 1);
+
+    }
+
+    public static VillagerProfession registerProfession(String id, RegistryKey<PointOfInterestType> heldWorkstation) {
+        return Registry.register(
+                Registries.VILLAGER_PROFESSION,
+                Identifier.of(MiningMagic.MOD_ID, id),
+                new VillagerProfession(
+                        id,
+                        (entry) -> entry.matchesKey(heldWorkstation),
+                        (entry) -> entry.matchesKey(heldWorkstation),
+                        ImmutableSet.of(),
+                        ImmutableSet.of(),
+                        SoundEvents.ENTITY_VILLAGER_WORK_ARMORER
+                )
+        );
     }
 
     public static RegistryKey<PointOfInterestType> registerPOI(String id) {
-        return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.ofVanilla(id));
+        return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.of(MiningMagic.MOD_ID, id));
     }
 
     private static Set<BlockState> getStatesOfBlock(Block block) {
         return ImmutableSet.copyOf(block.getStateManager().getStates());
     }
 
-    private static PointOfInterestType register(
-             RegistryKey<PointOfInterestType> key, Set<BlockState> states, int ticketCount, int searchDistance
+    private static PointOfInterestType registerPOIType(
+            RegistryKey<PointOfInterestType> key, Set<BlockState> states, int ticketCount, int searchDistance
     ) {
         PointOfInterestType pointOfInterestType = new PointOfInterestType(states, ticketCount, searchDistance);
         Registry.register(Registries.POINT_OF_INTEREST_TYPE, key, pointOfInterestType);
