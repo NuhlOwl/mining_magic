@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
-import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -23,7 +22,7 @@ import java.util.Set;
 public class Jobs {
     public static final RegistryKey<PointOfInterestType> PROSPECTOR = registerPOI("prospector");
     public static final RegistryKey<PointOfInterestType> LUMBERJACK = registerPOI("lumberjack");
-    public static final RegistryKey<PointOfInterestType> HUNTER = registerPOI("hunter");
+    public static final RegistryKey<PointOfInterestType> ADVENTURER = registerPOI("adventurer");
 
     public static final Block SLUICE_BLOCK = MiningMagic.registerBlock(
             new SluiceBlock(AbstractBlock.Settings.create()
@@ -60,7 +59,7 @@ public class Jobs {
     public static void init() {
         register(PROSPECTOR, getStatesOfBlock(SLUICE_BLOCK), 1, 1);
         register(LUMBERJACK, getStatesOfBlock(LOG_RACK_BLOCK), 1, 1);
-        register(HUNTER, getStatesOfBlock(LOOT_CRATE_BLOCK), 1, 1);
+        register(ADVENTURER, getStatesOfBlock(LOOT_CRATE_BLOCK), 1, 1);
     }
 
     public static RegistryKey<PointOfInterestType> registerPOI(String id) {
