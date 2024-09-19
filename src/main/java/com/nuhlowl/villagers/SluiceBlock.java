@@ -1,15 +1,16 @@
 package com.nuhlowl.villagers;
 
+import com.nuhlowl.common.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 public class SluiceBlock extends Block {
-    public static final DirectionProperty FACING = DirectionProperty.of("facing");
+    public static final EnumProperty<Direction> FACING = Properties.FACING;
 
     public SluiceBlock(Settings settings) {
         super(settings);
