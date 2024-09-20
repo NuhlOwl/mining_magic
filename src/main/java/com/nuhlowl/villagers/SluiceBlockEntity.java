@@ -7,11 +7,15 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.block.entity.ViewerCountManager;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.context.LootContextParameterSet;
@@ -33,22 +37,29 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.nuhlowl.MiningMagic.SLUICE_BLOCK_ENTITY;
 
 public class SluiceBlockEntity extends LootableContainerBlockEntity {
     public static final RegistryKey<LootTable> IDLE_LOOT_TABLE = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MiningMagic.MOD_ID, "idle/sluice"));
+    public static final RegistryKey<LootTable> WORKER_LOOT_TABLE = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MiningMagic.MOD_ID, "idle/sluice_worker"));
 
     private DefaultedList<ItemStack> inventory;
     private final ViewerCountManager stateManager;
+    private Optional<VillagerEntity> workerCache;
 
     public SluiceBlockEntity(BlockPos pos, BlockState state) {
         super(SLUICE_BLOCK_ENTITY, pos, state);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+        this.workerCache = Optional.empty();
+
         this.stateManager = new ViewerCountManager() {
             protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
                 SluiceBlockEntity.this.playSound(state, SoundEvents.BLOCK_IRON_DOOR_OPEN);
@@ -137,11 +148,85 @@ public class SluiceBlockEntity extends LootableContainerBlockEntity {
         }
     }
 
-    public void generateIdleLoot() {
+    public void generateIdleLoot(boolean waterlogged) {
+        if (waterlogged) {
+            generateWaterLoggedLoot();
+        }
+
+        generateWorkerLoot(this.world, this);
+    }
+
+    void setOpen(BlockState state, boolean open) {
+//        this.world.setBlockState(this.getPos(), state.with(BarrelBlock.OPEN, open), Block.NOTIFY_ALL);
+    }
+
+    void playSound(BlockState state, SoundEvent soundEvent) {
+        Vec3i vec3i = (state.get(Properties.HORIZONTAL_FACING)).getVector();
+        double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
+        double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
+        double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
+        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
+    }
+
+    private void generateWaterLoggedLoot() {
         LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(IDLE_LOOT_TABLE);
         LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
         List<ItemStack> loot = lootTable.generateLoot(set);
+        this.addLootToInventory(loot);
+    }
 
+    private void generateWorkerLoot(World world, SluiceBlockEntity entity) {
+        entity.findWorker(world).ifPresent((e) -> {
+            LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(WORKER_LOOT_TABLE);
+            LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
+            List<ItemStack> loot = lootTable.generateLoot(set);
+            entity.addLootToInventory(loot);
+        });
+    }
+
+    private Optional<VillagerEntity> findWorker(World world) {
+        if (this.workerCache.filter(LivingEntity::isAlive).isPresent()) {
+            return this.workerCache;
+        }
+
+        Box b = new Box(this.pos)
+                .expand(
+                        this.getHorizontalExpansion(),
+                        this.getHeightExpansion(),
+                        this.getHorizontalExpansion()
+                );
+
+        List<VillagerEntity> nearbyVillagers = world.getEntitiesByClass(
+                VillagerEntity.class,
+                b,
+                LivingEntity::isAlive
+        );
+
+        this.workerCache = nearbyVillagers.stream()
+                .filter(entity -> {
+                    Optional<GlobalPos> memory = entity.getBrain().getOptionalMemory(MemoryModuleType.JOB_SITE);
+                    if (memory != null && memory.isPresent()) {
+                        return memory.stream().allMatch(
+                                (p) -> p.equals(GlobalPos.create(world.getRegistryKey(), this.pos))
+                        );
+                    }
+
+                    return false;
+                })
+                .findFirst();
+
+        return this.workerCache;
+    }
+
+    protected int getHorizontalExpansion() {
+        return 64;
+    }
+
+    protected int getHeightExpansion() {
+        return 64;
+    }
+
+    private void addLootToInventory(List<ItemStack> loot) {
         for (ItemStack stack : loot) {
             if (stack.isEmpty()) {
                 continue;
@@ -173,17 +258,5 @@ public class SluiceBlockEntity extends LootableContainerBlockEntity {
                 }
             }
         }
-    }
-
-    void setOpen(BlockState state, boolean open) {
-//        this.world.setBlockState(this.getPos(), state.with(BarrelBlock.OPEN, open), Block.NOTIFY_ALL);
-    }
-
-    void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = (state.get(Properties.HORIZONTAL_FACING)).getVector();
-        double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
-        double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
-        double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
-        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
     }
 }

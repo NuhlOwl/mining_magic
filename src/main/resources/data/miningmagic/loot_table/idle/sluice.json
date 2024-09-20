@@ -6,12 +6,22 @@
       "entries": [
         {
           "type": "minecraft:empty",
-          "weight": 100
+          "weight": 1800
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:cobblestone",
+          "weight": 50
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:clay_ball",
           "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:mud",
+          "weight": 20
         },
         {
           "type": "minecraft:item",

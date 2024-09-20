@@ -63,8 +63,8 @@ public class SluiceBlock extends BlockWithEntity implements Waterloggable {
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof SluiceBlockEntity sluiceBlockEntity && state.get(WATERLOGGED)) {
-            sluiceBlockEntity.generateIdleLoot();
+        if (blockEntity instanceof SluiceBlockEntity sluiceBlockEntity) {
+            sluiceBlockEntity.generateIdleLoot(state.get(WATERLOGGED));
         }
     }
 
