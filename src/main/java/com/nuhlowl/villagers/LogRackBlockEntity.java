@@ -3,12 +3,14 @@ package com.nuhlowl.villagers;
 import com.nuhlowl.MiningMagic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -46,11 +48,16 @@ public class LogRackBlockEntity extends AbstractGathererJobBlockEntity {
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return new GenericContainerScreenHandler(ScreenHandlerType.GENERIC_9X6, syncId, playerInventory, this, 6);
+        return RestrictedContainerScreenHandler.createGeneric9x6(syncId, playerInventory, this, LogRackBlockEntity::isLog);
     }
 
     @Override
     public int size() {
         return 54;
+    }
+
+    public static Boolean isLog(ItemStack stack) {
+        return stack.getItem() instanceof BlockItem blockItem
+                && blockItem.getBlock().getDefaultState().isIn(BlockTags.LOGS);
     }
 }

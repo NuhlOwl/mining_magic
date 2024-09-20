@@ -2,6 +2,7 @@ package com.nuhlowl;
 
 import com.mojang.datafixers.types.Type;
 import com.nuhlowl.villagers.Jobs;
+import com.nuhlowl.villagers.RestrictedContainerScreenHandler;
 import com.nuhlowl.villagers.SluiceBlockEntity;
 import net.fabricmc.api.ModInitializer;
 
@@ -22,6 +23,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import org.slf4j.Logger;
@@ -45,6 +50,15 @@ public class MiningMagic implements ModInitializer {
     );
     public static final Item WAND = registerItem(new Wand(new Item.Settings()), "wand");
 
+    public static final ScreenHandlerType<RestrictedContainerScreenHandler> RESTRICTED_9X6 = registerScreenType("restricted_9x6", RestrictedContainerScreenHandler::createGeneric9x6);
+
+    private static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenType(String id, ScreenHandlerType.Factory<T> factory) {
+        return Registry.register(
+                Registries.SCREEN_HANDLER,
+                Identifier.of(MiningMagic.MOD_ID, id),
+                new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES)
+        );
+    }
 
     @Override
     public void onInitialize() {
