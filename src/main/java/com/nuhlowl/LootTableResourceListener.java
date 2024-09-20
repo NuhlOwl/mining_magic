@@ -24,14 +24,7 @@ public class LootTableResourceListener extends JsonDataLoader implements Identif
     @Override
     protected void apply(Map<Identifier, JsonElement> prepared, ResourceManager manager, Profiler profiler) {
         for (ResourcePack pack : manager.streamResourcePacks().toList()) {
-            MiningMagic.LOGGER.info("Checking pack {}", pack.getId());
-//            try {
-//                for (VillagerProfession villager : Registries.VILLAGER_PROFESSION.stream().collect(Collectors.toList())) {
-//                    loadAndMergeTradeOffers(pack, villager);
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+
         }
     }
 }
