@@ -1,7 +1,6 @@
 package com.nuhlowl.villagers;
 
 import com.mojang.serialization.MapCodec;
-import com.nuhlowl.MiningMagic;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.mob.PiglinBrain;
@@ -65,6 +64,7 @@ public class SluiceBlock extends BlockWithEntity implements Waterloggable {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof SluiceBlockEntity sluiceBlockEntity) {
             sluiceBlockEntity.generateIdleLoot(state.get(WATERLOGGED));
+            sluiceBlockEntity.generateGathererLoot();
         }
     }
 

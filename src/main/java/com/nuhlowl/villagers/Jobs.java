@@ -6,6 +6,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -38,7 +39,7 @@ public class Jobs {
             true
     );
     public static final Block LOG_RACK_BLOCK = MiningMagic.registerBlock(
-            new SluiceBlock(AbstractBlock.Settings.create()
+            new LogRackBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.STONE_GRAY)
                     .ticksRandomly()
                     .instrument(NoteBlockInstrument.BASS)
@@ -49,7 +50,7 @@ public class Jobs {
             true
     );
     public static final Block LOOT_CRATE_BLOCK = MiningMagic.registerBlock(
-            new SluiceBlock(AbstractBlock.Settings.create()
+            new LootCrateBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
                     .ticksRandomly()
                     .instrument(NoteBlockInstrument.BASS)
@@ -60,6 +61,10 @@ public class Jobs {
             "loot_crate",
             true
     );
+
+    public static final BlockEntityType<SluiceBlockEntity> SLUICE_BLOCK_ENTITY = MiningMagic.registerBlockEntity("sluice", BlockEntityType.Builder.create(SluiceBlockEntity::new, SLUICE_BLOCK));
+    public static final BlockEntityType<LogRackBlockEntity> LOG_RACK_BLOCK_ENTITY = MiningMagic.registerBlockEntity("log_rack", BlockEntityType.Builder.create(LogRackBlockEntity::new, LOG_RACK_BLOCK));
+    public static final BlockEntityType<LootCrateBlockEntity> LOOT_CRATE_BLOCK_ENTITY = MiningMagic.registerBlockEntity("loot_crate", BlockEntityType.Builder.create(LootCrateBlockEntity::new, LOOT_CRATE_BLOCK));
 
     public static final VillagerProfession PROSPECTOR_PROFESSION = registerProfession("prospector", PROSPECTOR);
     public static final VillagerProfession LUMBERJACK_PROFESSION = registerProfession("lumberjack", LUMBERJACK);

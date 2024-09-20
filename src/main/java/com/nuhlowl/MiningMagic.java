@@ -44,7 +44,6 @@ public class MiningMagic implements ModInitializer {
             true
     );
     public static final Item WAND = registerItem(new Wand(new Item.Settings()), "wand");
-    public static final BlockEntityType<SluiceBlockEntity> SLUICE_BLOCK_ENTITY = MiningMagic.registerBlockEntity("sluice", BlockEntityType.Builder.create(SluiceBlockEntity::new, Jobs.SLUICE_BLOCK));
 
 
     @Override

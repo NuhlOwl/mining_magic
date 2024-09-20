@@ -3,5 +3,15 @@
   "block.miningmagic.amethyst_dust": "Amethyst Dust",
   "item.miningmagic.amethyst_rune": "Amethyst Rune",
   "block.miningmagic.amethyst_rune": "Amethyst Rune",
-  "item.miningmagic.wand": "Wand"
+  "item.miningmagic.wand": "Wand",
+  "item.miningmagic.sluice": "Sluice",
+  "block.miningmagic.sluice": "Sluice",
+  "item.miningmagic.loot_crate": "Loot Crate",
+  "block.miningmagic.loot_crate": "Loot Crate",
+  "item.miningmagic.log_rack": "Log Rack",
+  "block.miningmagic.log_rack": "Log Rack",
+
+  "miningmagic.sluice_container": "Sluice",
+  "miningmagic.log_rack_container": "Log Rack",
+  "miningmagic.loot_crate_container": "Loot Crate"
 }
