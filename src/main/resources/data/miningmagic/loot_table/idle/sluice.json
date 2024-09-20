@@ -6,42 +6,37 @@
       "entries": [
         {
           "type": "minecraft:empty",
-          "weight": 1800
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:cobblestone",
-          "weight": 50
+          "weight": 20000
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:clay_ball",
-          "weight": 30
+          "weight": 8
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:mud",
-          "weight": 20
+          "weight": 7
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_nugget",
-          "weight": 20
+          "weight": 7
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:lapis_lazuli",
-          "weight": 10
+          "weight": 5
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 10
+          "weight": 5
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:gold_nugget",
-          "weight": 10
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -57,5 +52,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:chests/village/village_armorer"
+  "random_sequence": "miningmagic:idle/sluice"
 }
