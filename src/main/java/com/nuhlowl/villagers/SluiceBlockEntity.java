@@ -12,24 +12,36 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTables;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 import static com.nuhlowl.MiningMagic.SLUICE_BLOCK_ENTITY;
 
 public class SluiceBlockEntity extends LootableContainerBlockEntity {
+    public static final RegistryKey<LootTable> IDLE_LOOT_TABLE = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MiningMagic.MOD_ID, "idle/sluice"));
 
     private DefaultedList<ItemStack> inventory;
     private final ViewerCountManager stateManager;
@@ -39,12 +51,12 @@ public class SluiceBlockEntity extends LootableContainerBlockEntity {
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         this.stateManager = new ViewerCountManager() {
             protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
-                SluiceBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_OPEN);
+                SluiceBlockEntity.this.playSound(state, SoundEvents.BLOCK_IRON_DOOR_OPEN);
                 SluiceBlockEntity.this.setOpen(state, true);
             }
 
             protected void onContainerClose(World world, BlockPos pos, BlockState state) {
-                SluiceBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_CLOSE);
+                SluiceBlockEntity.this.playSound(state, SoundEvents.BLOCK_IRON_DOOR_OPEN);
                 SluiceBlockEntity.this.setOpen(state, false);
             }
 
@@ -53,7 +65,7 @@ public class SluiceBlockEntity extends LootableContainerBlockEntity {
 
             protected boolean isPlayerViewing(PlayerEntity player) {
                 if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
-                    Inventory inventory = ((GenericContainerScreenHandler)player.currentScreenHandler).getInventory();
+                    Inventory inventory = ((GenericContainerScreenHandler) player.currentScreenHandler).getInventory();
                     return inventory == SluiceBlockEntity.this;
                 } else {
                     return false;
@@ -125,15 +137,53 @@ public class SluiceBlockEntity extends LootableContainerBlockEntity {
         }
     }
 
+    public void generateIdleLoot() {
+        LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(IDLE_LOOT_TABLE);
+        LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
+        List<ItemStack> loot = lootTable.generateLoot(set);
+
+        for (ItemStack stack : loot) {
+            if (stack.isEmpty()) {
+                continue;
+            }
+            // find existing matching stack in inventory
+            for (int i = 0; i < inventory.size(); i++) {
+                ItemStack inventoryStack = inventory.get(i);
+                if ((stack.getItem() == inventoryStack.getItem() || inventoryStack.isEmpty())) {
+                    int newCount = stack.getCount() + inventoryStack.getCount();
+                    ItemStack copy = stack.copy();
+                    if (newCount > 64) {
+                        copy.setCount(64);
+                        inventory.set(i, copy);
+                        int remaining = newCount % 64;
+
+                        for (int j = 0; j < inventory.size(); j++) {
+                            if (inventory.get(j).isEmpty()) {
+                                ItemStack extra = stack.split(remaining);
+                                inventory.set(j, extra);
+                            }
+                        }
+                    } else {
+                        copy.setCount(newCount);
+                        inventory.set(i, copy);
+                    }
+
+                    this.markDirty();
+                    break;
+                }
+            }
+        }
+    }
+
     void setOpen(BlockState state, boolean open) {
 //        this.world.setBlockState(this.getPos(), state.with(BarrelBlock.OPEN, open), Block.NOTIFY_ALL);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
         Vec3i vec3i = (state.get(Properties.HORIZONTAL_FACING)).getVector();
-        double d = (double)this.pos.getX() + 0.5 + (double)vec3i.getX() / 2.0;
-        double e = (double)this.pos.getY() + 0.5 + (double)vec3i.getY() / 2.0;
-        double f = (double)this.pos.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;
+        double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
+        double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
+        double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
         this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
     }
 }

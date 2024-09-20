@@ -29,6 +29,7 @@ public class Jobs {
     public static final Block SLUICE_BLOCK = MiningMagic.registerBlock(
             new SluiceBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
+                    .ticksRandomly()
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.5F)
                     .sounds(BlockSoundGroup.METAL)
@@ -39,6 +40,7 @@ public class Jobs {
     public static final Block LOG_RACK_BLOCK = MiningMagic.registerBlock(
             new SluiceBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.STONE_GRAY)
+                    .ticksRandomly()
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.5F)
                     .sounds(BlockSoundGroup.METAL)
@@ -49,6 +51,7 @@ public class Jobs {
     public static final Block LOOT_CRATE_BLOCK = MiningMagic.registerBlock(
             new SluiceBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
+                    .ticksRandomly()
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.5F)
                     .sounds(BlockSoundGroup.WOOD)
