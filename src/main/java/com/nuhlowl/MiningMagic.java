@@ -1,6 +1,7 @@
 package com.nuhlowl;
 
 import com.mojang.datafixers.types.Type;
+import com.nuhlowl.spells.arcane.ArcaneShotEntity;
 import com.nuhlowl.villagers.Jobs;
 import com.nuhlowl.villagers.RestrictedContainerScreenHandler;
 import com.nuhlowl.villagers.SluiceBlockEntity;
@@ -14,6 +15,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.datafixer.TypeReferences;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootTable;
@@ -63,6 +67,15 @@ public class MiningMagic implements ModInitializer {
         );
     }
 
+    public static final EntityType<ArcaneShotEntity> ARCANE_SHOT_ENTITY = registerEntityType(
+            "arcane_shot",
+            EntityType.Builder.create(ArcaneShotEntity::create, SpawnGroup.MISC)
+                    .dimensions(0.3125F, 0.3125F)
+                    .eyeHeight(0.0F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -102,5 +115,10 @@ public class MiningMagic implements ModInitializer {
 
     private static TagKey<Item> registerItemTag(String id) {
         return TagKey.of(RegistryKeys.ITEM, Identifier.of(MiningMagic.MOD_ID, id));
+    }
+
+    private static <T extends Entity> EntityType<T> registerEntityType(String id, EntityType.Builder<T> type) {
+
+        return Registry.register(Registries.ENTITY_TYPE, Identifier.of(MiningMagic.MOD_ID, id), type.build(id));
     }
 }

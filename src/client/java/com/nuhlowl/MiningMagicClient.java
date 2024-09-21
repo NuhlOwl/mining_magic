@@ -1,7 +1,9 @@
 package com.nuhlowl;
 
+import com.nuhlowl.spells.arcane.ArcaneShotEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 
@@ -13,5 +15,7 @@ public class MiningMagicClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(MiningMagic.AMETHYST_DUST_BLOCK, RenderLayer.getCutout());
 
 		HandledScreens.register(MiningMagic.RESTRICTED_9X6, RestrictedContainerScreen::new);
+
+		EntityRendererRegistry.register(MiningMagic.ARCANE_SHOT_ENTITY, ArcaneShotEntityRenderer::new);
 	}
 }

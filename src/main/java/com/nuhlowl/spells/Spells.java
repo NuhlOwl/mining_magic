@@ -2,6 +2,7 @@ package com.nuhlowl.spells;
 
 import com.google.common.collect.ImmutableList;
 import com.nuhlowl.MiningMagic;
+import com.nuhlowl.spells.arcane.ArcaneShotSpell;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.math.random.CheckedRandom;
@@ -13,8 +14,10 @@ import java.util.stream.Collectors;
 
 public class Spells {
     public static final HashMap<Long, HashMap<Item, Spell>> SPELL_MAPS_BY_SEED = new HashMap<>();
+    public static final Spell DEFAULT_SPELL = new ArcaneShotSpell();
     public static final List<Spell> SPELLS = ImmutableList.of(
-        new FireBallSpell()
+            DEFAULT_SPELL,
+            new FireBallSpell()
     );
 
     public static void createSpellMapForSeed(long seed) {
@@ -38,7 +41,7 @@ public class Spells {
         int max = Math.min(spellOptions.size(), reagentOptions.size());
         MiningMagic.LOGGER.info("Generating {} spell combinations", max);
 
-        for (int i = 0; i<max; i++) {
+        for (int i = 0; i < max; i++) {
             if (reagentOptions.isEmpty()) {
                 // no more reagent spells
                 // remaining spells will be added to spell scroll/ritual spell lists
@@ -62,6 +65,12 @@ public class Spells {
             MiningMagic.LOGGER.info("registered item {} to spell {}", item.getName(), spell.getName());
         }
 
+        // any remaining reagents will be assigned to DEFAULT_SPELL
+        for (Item item : reagentOptions) {
+            seedSpells.put(item, DEFAULT_SPELL);
+            MiningMagic.LOGGER.info("registered item {} to spell {}", item.getName(), DEFAULT_SPELL.getName());
+        }
+
         SPELL_MAPS_BY_SEED.put(seed, seedSpells);
     }
 
@@ -70,16 +79,13 @@ public class Spells {
     }
 
     public static Spell getSpellForItem(long seed, Item item) {
-        MiningMagic.LOGGER.info("checking seed {} for item {}", seed, item);
         HashMap<Item, Spell> seedSpells = SPELL_MAPS_BY_SEED.get(seed);
 
-        MiningMagic.LOGGER.info("spells: {}", seedSpells);
         if (seedSpells == null) {
             return null;
         }
 
         Spell spell = seedSpells.get(item);
-        MiningMagic.LOGGER.info("spell: {}", spell);
 
         return spell;
     }

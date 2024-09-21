@@ -17,5 +17,6 @@
 
   "tag.item.miningmagic.magic.spell_reagent": "Spell Reagent",
   "miningmagic.spell": "Spell",
-  "miningmagic.spells.fireball": "Fireball"
+  "miningmagic.spells.fireball": "Fireball",
+  "miningmagic.spells.arcane_shot": "Arcane Shot"
 }
