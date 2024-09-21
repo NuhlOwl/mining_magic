@@ -7,3 +7,6 @@ mutable field net/minecraft/world/poi/PointOfInterestType ticketCount I
 accessible field net/minecraft/world/poi/PointOfInterestTypes POI_STATES_TO_TYPE Ljava/util/Map;
 mutable field net/minecraft/world/poi/PointOfInterestTypes POI_STATES_TO_TYPE Ljava/util/Map;
 accessible method net/minecraft/world/poi/PointOfInterestTypes getStatesOfBlock (Lnet/minecraft/block/Block;)Ljava/util/Set;
+accessible method net/minecraft/entity/passive/VillagerEntity afterUsing (Lnet/minecraft/village/TradeOffer;)V
+accessible field net/minecraft/village/TradeOffer rewardingPlayerExperience Z
+mutable field net/minecraft/village/TradeOffer rewardingPlayerExperience Z

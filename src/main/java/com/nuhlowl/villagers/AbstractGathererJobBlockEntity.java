@@ -1,5 +1,6 @@
 package com.nuhlowl.villagers;
 
+import com.nuhlowl.MiningMagic;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
@@ -133,11 +134,15 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
     }
 
     private void generateWorkerLoot(World world, AbstractGathererJobBlockEntity entity) {
-        entity.findWorker(world).ifPresent((e) -> {
+        entity.findWorker(world).ifPresent((worker) -> {
             LootTable lootTable = getWorkerLootTable();
             LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
             List<ItemStack> loot = lootTable.generateLoot(set);
             entity.addLootToInventory(loot);
+
+            GathererTrade trade = new GathererTrade();
+            worker.afterUsing(trade);
+            worker.setExperienceFromServer(worker.getExperience() + trade.getMerchantExperience());
         });
     }
 
