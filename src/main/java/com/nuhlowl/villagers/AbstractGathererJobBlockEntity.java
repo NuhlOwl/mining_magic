@@ -136,7 +136,9 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
     private void generateWorkerLoot(World world, AbstractGathererJobBlockEntity entity) {
         entity.findWorker(world).ifPresent((worker) -> {
             LootTable lootTable = getWorkerLootTable();
-            LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
+            LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld()))
+                    .luck(worker.getVillagerData().getLevel())
+                    .build(LootContextTypes.EMPTY);
             List<ItemStack> loot = lootTable.generateLoot(set);
             entity.addLootToInventory(loot);
 
