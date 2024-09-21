@@ -35,7 +35,7 @@ public class Spells {
                 .filter((item) -> item.getDefaultStack().isIn(MiningMagic.REAGENT_ITEM_TAG))
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        int max = Math.max(spellOptions.size(), reagentOptions.size());
+        int max = Math.min(spellOptions.size(), reagentOptions.size());
         MiningMagic.LOGGER.info("Generating {} spell combinations", max);
 
         for (int i = 0; i<max; i++) {
