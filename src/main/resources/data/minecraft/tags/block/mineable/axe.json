@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "miningmagic:log_rack",
+    "miningmagic:loot_crate"
+  ]
+}
