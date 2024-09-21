@@ -13,5 +13,9 @@
 
   "miningmagic.sluice_container": "Sluice",
   "miningmagic.log_rack_container": "Log Rack",
-  "miningmagic.loot_crate_container": "Loot Crate"
+  "miningmagic.loot_crate_container": "Loot Crate",
+
+  "tag.item.miningmagic.magic.spell_reagent": "Spell Reagent",
+  "miningmagic.spell": "Spell",
+  "miningmagic.spells.fireball": "Fireball"
 }

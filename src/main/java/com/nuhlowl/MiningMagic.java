@@ -22,6 +22,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.GenericContainerScreenHandler;
@@ -50,6 +51,8 @@ public class MiningMagic implements ModInitializer {
     );
     public static final Item WAND = registerItem(new Wand(new Item.Settings()), "wand");
 
+    public static final TagKey<Item> REAGENT_ITEM_TAG = registerItemTag("magic/spell_reagent");
+
     public static final ScreenHandlerType<RestrictedContainerScreenHandler> RESTRICTED_9X6 = registerScreenType("restricted_9x6", RestrictedContainerScreenHandler::createGeneric9x6);
 
     private static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenType(String id, ScreenHandlerType.Factory<T> factory) {
@@ -67,13 +70,6 @@ public class MiningMagic implements ModInitializer {
         // Proceed with mild caution.
 
         Jobs.init();
-
-        PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, entity) -> {
-//            LOGGER.info("block break");
-            return true;
-        });
-//        RegistryKey<LootTable> key = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MiningMagic.MOD_ID, "idle/sluice"));
-//        LootTable lootTable = piglin.getWorld().getServer().getReloadableRegistries().getLootTable(LootTables.PIGLIN_BARTERING_GAMEPLAY);
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LootTableResourceListener());
     }
@@ -102,5 +98,9 @@ public class MiningMagic implements ModInitializer {
         Identifier identifier = Identifier.of(MOD_ID, id);
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, identifier, builder.build(type));
+    }
+
+    private static TagKey<Item> registerItemTag(String id) {
+        return TagKey.of(RegistryKeys.ITEM, Identifier.of(MiningMagic.MOD_ID, id));
     }
 }
