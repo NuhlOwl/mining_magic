@@ -75,6 +75,6 @@ public class Wand extends Item {
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BRUSH;
+        return UseAction.BOW;
     }
 }
