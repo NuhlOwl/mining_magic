@@ -91,6 +91,13 @@ public class MiningMagic implements ModInitializer {
             type -> ArcaneParticleEffect.PACKET_CODEC
     );
 
+    public static final ParticleType<ArcaneParticleEffect> ARCANE_SPARK_PARTICLE = registerParticleType(
+            "arcane_spark",
+            false,
+            type -> ArcaneParticleEffect.CODEC,
+            type -> ArcaneParticleEffect.PACKET_CODEC
+    );
+
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -98,8 +105,6 @@ public class MiningMagic implements ModInitializer {
         // Proceed with mild caution.
 
         Jobs.init();
-
-
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LootTableResourceListener());
     }
