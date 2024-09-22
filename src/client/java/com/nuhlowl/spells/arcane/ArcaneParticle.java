@@ -2,25 +2,30 @@ package com.nuhlowl.spells.arcane;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.util.math.Vec3d;
 
 public class ArcaneParticle extends SpriteBillboardParticle {
-    protected ArcaneParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-        super(clientWorld, d, e, f, 0.0, 0.0, 0.0);
+    protected ArcaneParticle(
+            ClientWorld clientWorld,
+            double x,
+            double y,
+            double z,
+            double velocityX,
+            double velocityY,
+            double velocityZ
+    ) {
+        super(clientWorld, x, y, z, 0.0, 0.0, 0.0);
         this.velocityMultiplier = 0.7F;
-        this.gravityStrength = 0.5F;
-        this.velocityX *= 0.1F;
-        this.velocityY *= 0.1F;
-        this.velocityZ *= 0.1F;
-        this.velocityX += g * 0.4;
-        this.velocityY += h * 0.4;
-        this.velocityZ += i * 0.4;
-        float j = (float)(Math.random() * 0.3F + 0.6F);
-        this.red = j;
-        this.green = j;
-        this.blue = j;
+        this.gravityStrength = 0F;
+
+        double speed = new Vec3d(velocityX, velocityY, velocityZ).length();
+        Vec3d velocity = new Vec3d(unitRandom(), unitRandom(), unitRandom()).multiply(speed);
+        this.velocityX = velocity.x;
+        this.velocityY = velocity.y;
+        this.velocityZ = velocity.z;
         this.scale *= 0.75F;
-        this.maxAge = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-        this.collidesWithWorld = false;
+        this.maxAge = 7;
+        this.collidesWithWorld = true;
         this.tick();
     }
 
@@ -41,5 +46,9 @@ public class ArcaneParticle extends SpriteBillboardParticle {
             damageParticle.setSprite(this.spriteProvider);
             return damageParticle;
         }
+    }
+
+    public static double unitRandom() {
+        return Math.random() * 2.0 - 1.0;
     }
 }

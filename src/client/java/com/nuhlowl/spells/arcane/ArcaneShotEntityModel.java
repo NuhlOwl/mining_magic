@@ -54,7 +54,12 @@ public class ArcaneShotEntityModel extends SinglePartEntityModel<ArcaneShotEntit
     public void setAngles(ArcaneShotEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         ModelPart bone = this.modelData.getChild(EntityModelPartNames.BONE);
         bone.getChild("inner").yaw = -animationProgress * 16.0F * (float) (Math.PI / 180.0);
+        bone.getChild("inner").pitch = animationProgress * 16.0F * (float) (Math.PI / 180.0);
+
         bone.getChild("middle").yaw = animationProgress * 16.0F * (float) (Math.PI / 180.0);
+        bone.getChild("middle").pitch = -animationProgress * 16.0F * (float) (Math.PI / 180.0);
+
         bone.getChild("outer").yaw = -animationProgress * 16.0F * (float) (Math.PI / 180.0);
+        bone.getChild("outer").pitch = animationProgress * 16.0F * (float) (Math.PI / 180.0);
     }
 }

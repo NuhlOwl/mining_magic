@@ -1,6 +1,7 @@
 package com.nuhlowl;
 
 import com.nuhlowl.spells.Spell;
+import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.Spells;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -55,7 +56,10 @@ public class Wand extends Item {
                 Spell spell = Spells.getSpellForItem(serverWorld.getSeed(), reagent.getItem());
 
                 if (spell != null) {
-                    spell.castSpell(playerEntity, world, reagent);
+                    SpellCastResult result = spell.castSpell(playerEntity, world, reagent);
+                    if (!user.isInCreativeMode()) {
+                        reagent.decrement(result.cost);
+                    }
                     user.setStackInHand(otherHand, reagent);
                 }
             } else {

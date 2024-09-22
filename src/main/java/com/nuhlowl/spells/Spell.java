@@ -8,5 +8,5 @@ import net.minecraft.world.World;
 public interface Spell {
     Text getName();
 
-    void castSpell(PlayerEntity user, World world, ItemStack reagent);
+    SpellCastResult castSpell(PlayerEntity user, World world, ItemStack reagent);
 }

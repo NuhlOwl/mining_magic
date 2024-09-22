@@ -1,6 +1,7 @@
 package com.nuhlowl.spells.arcane;
 
 import com.nuhlowl.spells.Spell;
+import com.nuhlowl.spells.SpellCastResult;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -15,7 +16,7 @@ public class ArcaneShotSpell implements Spell {
     }
 
     @Override
-    public void castSpell(PlayerEntity user, World world, ItemStack reagent) {
+    public SpellCastResult castSpell(PlayerEntity user, World world, ItemStack reagent) {
         float x = -MathHelper.sin(user.getYaw() * (float) (Math.PI / 180.0)) * MathHelper.cos(user.getPitch() * (float) (Math.PI / 180.0));
         float y = -MathHelper.sin(user.getPitch() * (float) (Math.PI / 180.0));
         float z = MathHelper.cos(user.getYaw() * (float) (Math.PI / 180.0)) * MathHelper.cos(user.getPitch() * (float) (Math.PI / 180.0));
@@ -27,6 +28,6 @@ public class ArcaneShotSpell implements Spell {
         arcaneShotEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F , 1.5F, 1.0F);
         world.spawnEntity(arcaneShotEntity);
 
-        reagent.decrement(1);
+        return new SpellCastResult(1);
     }
 }

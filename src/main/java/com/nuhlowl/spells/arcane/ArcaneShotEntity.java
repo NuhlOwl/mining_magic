@@ -40,7 +40,7 @@ public class ArcaneShotEntity extends ExplosiveProjectileEntity {
 
     @Override
     protected @Nullable ParticleEffect getParticleType() {
-        return new ArcaneParticleEffect(1);
+        return null;
     }
 
     @Override
@@ -99,6 +99,14 @@ public class ArcaneShotEntity extends ExplosiveProjectileEntity {
             this.discard();
         } else {
             super.tick();
+            Vec3d velocity = this.getVelocity();
+            double particleX = this.getX() + velocity.x;
+            double particleY = this.getY() + velocity.y;
+            double particleZ = this.getZ() + velocity.z;
+            velocity = velocity.multiply(.5);
+            ArcaneParticleEffect particleEffect = new ArcaneParticleEffect(1);
+            this.getWorld().addParticle(particleEffect, particleX, particleY, particleZ, velocity.x, velocity.y, velocity.z);
+
         }
     }
 }
