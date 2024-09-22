@@ -40,7 +40,7 @@ public class ArcaneShotEntity extends ExplosiveProjectileEntity {
 
     @Override
     protected @Nullable ParticleEffect getParticleType() {
-        return null;
+        return new ArcaneParticleEffect(1);
     }
 
     @Override

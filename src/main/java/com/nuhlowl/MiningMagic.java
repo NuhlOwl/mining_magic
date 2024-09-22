@@ -1,6 +1,8 @@
 package com.nuhlowl;
 
 import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.MapCodec;
+import com.nuhlowl.spells.arcane.ArcaneParticleEffect;
 import com.nuhlowl.spells.arcane.ArcaneShotEntity;
 import com.nuhlowl.villagers.Jobs;
 import com.nuhlowl.villagers.RestrictedContainerScreenHandler;
@@ -22,6 +24,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -36,6 +42,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.function.Function;
 
 public class MiningMagic implements ModInitializer {
     // This logger is used to write text to the console and the log file.
@@ -76,6 +84,13 @@ public class MiningMagic implements ModInitializer {
                     .trackingTickInterval(10)
     );
 
+    public static final ParticleType<ArcaneParticleEffect> ARCANE_TRAIL_PARTICLE = registerParticleType(
+            "arcane_trail",
+            false,
+            type -> ArcaneParticleEffect.CODEC,
+            type -> ArcaneParticleEffect.PACKET_CODEC
+    );
+
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -83,6 +98,8 @@ public class MiningMagic implements ModInitializer {
         // Proceed with mild caution.
 
         Jobs.init();
+
+
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LootTableResourceListener());
     }
@@ -120,5 +137,24 @@ public class MiningMagic implements ModInitializer {
     private static <T extends Entity> EntityType<T> registerEntityType(String id, EntityType.Builder<T> type) {
 
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(MiningMagic.MOD_ID, id), type.build(id));
+    }
+
+    private static <T extends ParticleEffect> ParticleType<T> registerParticleType(
+            String name,
+            boolean alwaysShow,
+            Function<ParticleType<T>, MapCodec<T>> codecGetter,
+            Function<ParticleType<T>, PacketCodec<? super RegistryByteBuf, T>> packetCodecGetter
+    ) {
+        return Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MiningMagic.MOD_ID, name), new ParticleType<T>(alwaysShow) {
+            @Override
+            public MapCodec<T> getCodec() {
+                return codecGetter.apply(this);
+            }
+
+            @Override
+            public PacketCodec<? super RegistryByteBuf, T> getPacketCodec() {
+                return packetCodecGetter.apply(this);
+            }
+        });
     }
 }
