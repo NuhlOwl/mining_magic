@@ -66,6 +66,8 @@ public class Wand extends Item {
                 MiningMagic.LOGGER.info("fail");
             }
         }
+
+        this.charging = false;
     }
 
     @Override
@@ -76,5 +78,9 @@ public class Wand extends Item {
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
+    }
+
+    public boolean isCharging() {
+        return this.charging;
     }
 }

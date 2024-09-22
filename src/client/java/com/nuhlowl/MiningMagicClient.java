@@ -8,7 +8,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.mixin.client.message.ClientPlayNetworkHandlerMixin;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 
 public class MiningMagicClient implements ClientModInitializer {
 	@Override
@@ -26,5 +28,16 @@ public class MiningMagicClient implements ClientModInitializer {
 
 		EntityRendererRegistry
 				.register(MiningMagic.ARCANE_SHOT_ENTITY, ArcaneShotEntityRenderer::new);
+
+		ModelPredicateProviderRegistry.register(
+				MiningMagic.WAND,
+				Identifier.of(MiningMagic.MOD_ID, "charging"),
+				((stack, world, entity, seed) -> {
+					if (stack.getItem() instanceof Wand wand) {
+						return wand.isCharging() ? 1.0F : 0.0F;
+					}
+					return 0.0F;
+				})
+		);
 	}
 }
