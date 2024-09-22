@@ -1,5 +1,6 @@
 package com.nuhlowl.spells.arcane;
 
+import com.nuhlowl.MiningMagic;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class ArcaneShotEntityRenderer extends EntityRenderer<ArcaneShotEntity> {
     private static final float SOME_CONSTANT = MathHelper.square(3.5F);
-    private static final Identifier TEXTURE = Identifier.ofVanilla("textures/entity/projectiles/wind_charge.png");
+    private static final Identifier TEXTURE = Identifier.of(MiningMagic.MOD_ID, "textures/magic/spells/arcane_shot.png");
     private final ArcaneShotEntityModel model;
 
     public ArcaneShotEntityRenderer(EntityRendererFactory.Context ctx) {
@@ -25,7 +26,7 @@ public class ArcaneShotEntityRenderer extends EntityRenderer<ArcaneShotEntity> {
     ) {
         if (arcaneShotEntity.age >= 2 || !(this.dispatcher.camera.getFocusedEntity().squaredDistanceTo(arcaneShotEntity) < (double) SOME_CONSTANT)) {
             float h = (float) arcaneShotEntity.age + g;
-            VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getBreezeWind(TEXTURE, this.getXOffset(h) % 1.0F, 0.0F));
+            VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(TEXTURE));
             this.model.setAngles(arcaneShotEntity, 0.0F, 0.0F, h, 0.0F, 0.0F);
             this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV);
             super.render(arcaneShotEntity, f, g, matrixStack, vertexConsumerProvider, i);
