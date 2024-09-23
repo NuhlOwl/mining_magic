@@ -201,10 +201,10 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
                 if ((stack.getItem() == inventoryStack.getItem() || inventoryStack.isEmpty())) {
                     int newCount = stack.getCount() + inventoryStack.getCount();
                     ItemStack copy = stack.copy();
-                    if (newCount > 64) {
-                        copy.setCount(64);
+                    if (newCount > copy.getMaxCount()) {
+                        copy.setCount(copy.getMaxCount());
                         inventory.set(i, copy);
-                        int remaining = newCount % 64;
+                        int remaining = newCount % copy.getMaxCount();
 
                         for (int j = 0; j < inventory.size(); j++) {
                             if (inventory.get(j).isEmpty()) {
