@@ -2,11 +2,12 @@ package com.nuhlowl;
 
 import com.nuhlowl.spells.arcane.ArcaneParticle;
 import com.nuhlowl.spells.arcane.ArcaneShotEntityRenderer;
+import com.nuhlowl.spells.arcane.ShotSpellEntityRenderer;
+import com.nuhlowl.spells.arcane.StatusEffectSpellEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.mixin.client.message.ClientPlayNetworkHandlerMixin;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
@@ -28,6 +29,9 @@ public class MiningMagicClient implements ClientModInitializer {
 
 		EntityRendererRegistry
 				.register(MiningMagic.ARCANE_SHOT_ENTITY, ArcaneShotEntityRenderer::new);
+
+		EntityRendererRegistry
+				.register(MiningMagic.STATUS_EFFECT_SPELL_ENTITY, StatusEffectSpellEntityRenderer::new);
 
 		ModelPredicateProviderRegistry.register(
 				MiningMagic.WAND,

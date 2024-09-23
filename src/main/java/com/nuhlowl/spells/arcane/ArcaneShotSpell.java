@@ -15,7 +15,12 @@ public class ArcaneShotSpell implements Spell {
 
     @Override
     public SpellCastResult castSpell(PlayerEntity user, World world, ItemStack reagent) {
-        ArcaneShotEntity arcaneShotEntity = new ArcaneShotEntity(world, user.getPos().getX(), user.getEyePos().getY(), user.getPos().getZ());
+        ArcaneShotEntity arcaneShotEntity = new ArcaneShotEntity(
+                world,
+                user.getPos().getX(),
+                user.getEyePos().getY(),
+                user.getPos().getZ()
+        );
         arcaneShotEntity.setOwner(user);
         arcaneShotEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F , 1.5F, 1.0F);
 

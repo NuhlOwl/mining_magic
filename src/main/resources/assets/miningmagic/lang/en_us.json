@@ -18,5 +18,8 @@
   "tag.item.miningmagic.magic.spell_reagent": "Spell Reagent",
   "miningmagic.spell": "Spell",
   "miningmagic.spells.fireball": "Fireball",
-  "miningmagic.spells.arcane_shot": "Arcane Shot"
+  "miningmagic.spells.arcane_shot": "Arcane Shot",
+  "miningmagic.spells.status_effect": "%s Spell",
+  "miningmagic.commands.spells.spell_item_combination": "%s casts %s",
+  "miningmagic.commands.spells.header": "Spells:"
 }

@@ -1,15 +1,17 @@
 package com.nuhlowl.spells.arcane;
 
+import com.nuhlowl.spells.ShotSpellEntity;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
-import net.minecraft.client.render.entity.model.SinglePartEntityModel;
+import net.minecraft.client.render.entity.model.TintableCompositeModel;
 
-public class ArcaneShotEntityModel extends SinglePartEntityModel<ArcaneShotEntity> {
+public class ArcaneShotEntityModel<T extends ShotSpellEntity> extends TintableCompositeModel<T> {
     private final ModelPart modelData;
 
     public ArcaneShotEntityModel() {
-        super(RenderLayer::getEntityTranslucent);
+        super();
+//        this.layerFactory = RenderLayer::getEntityTranslucent;
+
         ModelData modelData = new ModelData();
         ModelPartData root = modelData.getRoot();
         ModelPartData bone = root.addChild(EntityModelPartNames.BONE,
@@ -51,7 +53,7 @@ public class ArcaneShotEntityModel extends SinglePartEntityModel<ArcaneShotEntit
     }
 
     @Override
-    public void setAngles(ArcaneShotEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(ShotSpellEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         ModelPart bone = this.modelData.getChild(EntityModelPartNames.BONE);
         bone.getChild("inner").yaw = -animationProgress * 16.0F * (float) (Math.PI / 180.0);
         bone.getChild("inner").pitch = animationProgress * 16.0F * (float) (Math.PI / 180.0);

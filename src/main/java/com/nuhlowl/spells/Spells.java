@@ -3,8 +3,13 @@ package com.nuhlowl.spells;
 import com.google.common.collect.ImmutableList;
 import com.nuhlowl.MiningMagic;
 import com.nuhlowl.spells.arcane.ArcaneShotSpell;
+import com.nuhlowl.spells.status.StatusEffectSpell;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.random.CheckedRandom;
 
 import java.util.ArrayList;
@@ -17,7 +22,31 @@ public class Spells {
     public static final Spell DEFAULT_SPELL = new ArcaneShotSpell();
     public static final List<Spell> SPELLS = ImmutableList.of(
             DEFAULT_SPELL,
-            new FireBallSpell()
+            new FireBallSpell(),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.POISON_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.SPEED_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.HASTE_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.INSTANT_DAMAGE_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.INSTANT_HEALTH_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.JUMP_BOOST_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.REGENERATION_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.RESISTANCE_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.FIRE_RESISTANCE_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.WATER_BREATHING_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.INVISIBILITY_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.BLINDNESS_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.NIGHT_VISION_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.WEAKNESS_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.WITHER_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.HEALTH_BOOST_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.ABSORPTION_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.LEVITATION_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.SLOW_FALLING_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.GLOWING_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.WEAVING_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.OOZING_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.INFESTED_ID),
+            new StatusEffectSpell(StatusEffectSpell.StatusId.WIND_CHARGED_ID)
     );
 
     public static void createSpellMapForSeed(long seed) {
@@ -39,7 +68,6 @@ public class Spells {
                 .collect(Collectors.toCollection(ArrayList::new));
 
         int max = Math.min(spellOptions.size(), reagentOptions.size());
-        MiningMagic.LOGGER.info("Generating {} spell combinations", max);
 
         for (int i = 0; i < max; i++) {
             if (reagentOptions.isEmpty()) {
@@ -62,13 +90,11 @@ public class Spells {
             spellOptions.remove(spell);
 
             seedSpells.put(item, spell);
-            MiningMagic.LOGGER.info("registered item {} to spell {}", item.getName(), spell.getName());
         }
 
         // any remaining reagents will be assigned to DEFAULT_SPELL
         for (Item item : reagentOptions) {
             seedSpells.put(item, DEFAULT_SPELL);
-            MiningMagic.LOGGER.info("registered item {} to spell {}", item.getName(), DEFAULT_SPELL.getName());
         }
 
         SPELL_MAPS_BY_SEED.put(seed, seedSpells);

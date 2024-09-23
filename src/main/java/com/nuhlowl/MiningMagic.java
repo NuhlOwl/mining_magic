@@ -2,13 +2,16 @@ package com.nuhlowl;
 
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.MapCodec;
+import com.nuhlowl.commands.SpellsCommand;
 import com.nuhlowl.spells.arcane.ArcaneParticleEffect;
 import com.nuhlowl.spells.arcane.ArcaneShotEntity;
+import com.nuhlowl.spells.status.StatusEffectSpellEntity;
 import com.nuhlowl.villagers.Jobs;
 import com.nuhlowl.villagers.RestrictedContainerScreenHandler;
 import com.nuhlowl.villagers.SluiceBlockEntity;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.block.AbstractBlock;
@@ -19,7 +22,9 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.datafixer.TypeReferences;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootTable;
@@ -40,6 +45,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +83,16 @@ public class MiningMagic implements ModInitializer {
 
     public static final EntityType<ArcaneShotEntity> ARCANE_SHOT_ENTITY = registerEntityType(
             "arcane_shot",
-            EntityType.Builder.create(ArcaneShotEntity::create, SpawnGroup.MISC)
+            EntityType.Builder.create((EntityType.EntityFactory<ArcaneShotEntity>) ArcaneShotEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.3125F, 0.3125F)
+                    .eyeHeight(0.0F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+
+    public static final EntityType<StatusEffectSpellEntity> STATUS_EFFECT_SPELL_ENTITY = registerEntityType(
+            "status_effect_spell",
+            EntityType.Builder.create((EntityType.EntityFactory<StatusEffectSpellEntity>) StatusEffectSpellEntity::new, SpawnGroup.MISC)
                     .dimensions(0.3125F, 0.3125F)
                     .eyeHeight(0.0F)
                     .maxTrackingRange(4)
@@ -105,6 +120,9 @@ public class MiningMagic implements ModInitializer {
         // Proceed with mild caution.
 
         Jobs.init();
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            SpellsCommand.register(dispatcher);
+        });
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LootTableResourceListener());
     }
