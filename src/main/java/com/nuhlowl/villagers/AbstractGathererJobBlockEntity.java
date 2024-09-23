@@ -28,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.village.TradeOffer;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -142,9 +143,17 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
             List<ItemStack> loot = lootTable.generateLoot(set);
             entity.addLootToInventory(loot);
 
-            GathererTrade trade = new GathererTrade();
-            worker.afterUsing(trade);
-            worker.setExperienceFromServer(worker.getExperience() + trade.getMerchantExperience());
+            if (!loot.isEmpty()) {
+                TradeOffer trade = new TradeOffer(
+                        null,
+                        ItemStack.EMPTY,
+                        0,
+                        1,
+                        0
+                );
+                worker.trade(trade);
+                worker.setExperienceFromServer(worker.getExperience() + trade.getMerchantExperience());
+            }
         });
     }
 

@@ -71,9 +71,6 @@ public class Jobs {
     public static final VillagerProfession ADVENTURER_PROFESSION = registerProfession("adventurer", ADVENTURER);
 
     public static void init() {
-        registerPOIType(PROSPECTOR, getStatesOfBlock(SLUICE_BLOCK), 1, 1);
-        registerPOIType(LUMBERJACK, getStatesOfBlock(LOG_RACK_BLOCK), 1, 1);
-        registerPOIType(ADVENTURER, getStatesOfBlock(LOOT_CRATE_BLOCK), 1, 1);
 
     }
 
@@ -94,27 +91,5 @@ public class Jobs {
 
     public static RegistryKey<PointOfInterestType> registerPOI(String id) {
         return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.of(MiningMagic.MOD_ID, id));
-    }
-
-    private static Set<BlockState> getStatesOfBlock(Block block) {
-        return ImmutableSet.copyOf(block.getStateManager().getStates());
-    }
-
-    private static PointOfInterestType registerPOIType(
-            RegistryKey<PointOfInterestType> key, Set<BlockState> states, int ticketCount, int searchDistance
-    ) {
-        PointOfInterestType pointOfInterestType = new PointOfInterestType(states, ticketCount, searchDistance);
-        Registry.register(Registries.POINT_OF_INTEREST_TYPE, key, pointOfInterestType);
-        registerStates(Registries.POINT_OF_INTEREST_TYPE.entryOf(key), states);
-        return pointOfInterestType;
-    }
-
-    private static void registerStates(RegistryEntry<PointOfInterestType> poiTypeEntry, Set<BlockState> states) {
-        states.forEach(state -> {
-            PointOfInterestTypes.POI_STATES_TO_TYPE.put(state, poiTypeEntry);
-//            if (registryEntry2 != null) {
-//                throw (IllegalStateException) Util.throwOrPause(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", state)));
-//            }
-        });
     }
 }

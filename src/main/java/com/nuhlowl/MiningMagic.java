@@ -13,6 +13,8 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -115,6 +117,27 @@ public class MiningMagic implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             SpellsCommand.register(dispatcher);
         });
+
+        PointOfInterestHelper.register(
+                Identifier.of(MiningMagic.MOD_ID, "prospector"),
+                1,
+                1,
+                Jobs.SLUICE_BLOCK
+        );
+
+        PointOfInterestHelper.register(
+                Identifier.of(MiningMagic.MOD_ID, "lumberjack"),
+                1,
+                1,
+                Jobs.LOG_RACK_BLOCK
+        );
+
+        PointOfInterestHelper.register(
+                Identifier.of(MiningMagic.MOD_ID, "adventurer"),
+                1,
+                1,
+                Jobs.LOOT_CRATE_BLOCK
+        );
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LootTableResourceListener());
     }
