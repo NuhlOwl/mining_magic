@@ -3,6 +3,7 @@ package com.nuhlowl;
 import com.nuhlowl.spells.Spell;
 import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.Spells;
+import net.minecraft.component.ComponentMap;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -38,6 +39,11 @@ public class Wand extends Item {
         }
 
         return TypedActionResult.fail(item);
+    }
+
+    @Override
+    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
+        super.usageTick(world, user, stack, remainingUseTicks);
     }
 
     @Override

@@ -67,19 +67,11 @@ public class MiningMagic implements ModInitializer {
             "amethyst_dust",
             true
     );
-    public static final Item WAND = registerItem(new Wand(new Item.Settings()), "wand");
+    public static final Item WAND = registerItem(new Wand(new Item.Settings().maxCount(1).maxDamage(100)), "wand");
 
     public static final TagKey<Item> REAGENT_ITEM_TAG = registerItemTag("magic/spell_reagent");
 
     public static final ScreenHandlerType<RestrictedContainerScreenHandler> RESTRICTED_9X6 = registerScreenType("restricted_9x6", RestrictedContainerScreenHandler::createGeneric9x6);
-
-    private static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenType(String id, ScreenHandlerType.Factory<T> factory) {
-        return Registry.register(
-                Registries.SCREEN_HANDLER,
-                Identifier.of(MiningMagic.MOD_ID, id),
-                new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES)
-        );
-    }
 
     public static final EntityType<ArcaneShotEntity> ARCANE_SHOT_ENTITY = registerEntityType(
             "arcane_shot",
@@ -179,5 +171,13 @@ public class MiningMagic implements ModInitializer {
                 return packetCodecGetter.apply(this);
             }
         });
+    }
+
+    private static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenType(String id, ScreenHandlerType.Factory<T> factory) {
+        return Registry.register(
+                Registries.SCREEN_HANDLER,
+                Identifier.of(MiningMagic.MOD_ID, id),
+                new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES)
+        );
     }
 }
