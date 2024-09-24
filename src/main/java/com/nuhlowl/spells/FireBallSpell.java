@@ -1,6 +1,6 @@
 package com.nuhlowl.spells;
 
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -15,7 +15,7 @@ public class FireBallSpell implements Spell {
     }
 
     @Override
-    public SpellCastResult castSpell(PlayerEntity user, World world, ItemStack reagent) {
+    public SpellCastResult castSpell(LivingEntity user, World world, ItemStack reagent) {
 
         float x = -MathHelper.sin(user.getYaw() * (float) (Math.PI / 180.0)) * MathHelper.cos(user.getPitch() * (float) (Math.PI / 180.0));
         float y = -MathHelper.sin(user.getPitch() * (float) (Math.PI / 180.0));
@@ -28,5 +28,15 @@ public class FireBallSpell implements Spell {
         world.spawnEntity(smallFireballEntity);
 
         return new SpellCastResult(1);
+    }
+
+    @Override
+    public int cost() {
+        return 5;
+    }
+
+    @Override
+    public int perIncrementCost() {
+        return 2;
     }
 }

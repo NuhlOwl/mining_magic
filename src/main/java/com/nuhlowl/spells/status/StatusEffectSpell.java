@@ -3,10 +3,10 @@ package com.nuhlowl.spells.status;
 import com.nuhlowl.spells.ShotSpellEntity;
 import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.arcane.ArcaneShotSpell;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
@@ -94,6 +94,12 @@ public class StatusEffectSpell extends ArcaneShotSpell {
     private final StatusId statusId;
 
     public StatusEffectSpell(StatusId statusId) {
+        super();
+        this.statusId = statusId;
+    }
+
+    public StatusEffectSpell(StatusId statusId, int cost, int perIncrementCost) {
+        super(cost, perIncrementCost);
         this.statusId = statusId;
     }
 
@@ -110,7 +116,7 @@ public class StatusEffectSpell extends ArcaneShotSpell {
     }
 
     @Override
-    public SpellCastResult castSpell(PlayerEntity user, World world, ItemStack reagent) {
+    public SpellCastResult castSpell(LivingEntity user, World world, ItemStack reagent) {
         RegistryEntry<StatusEffect> effect = getEffect();
 
         if (effect.value().isBeneficial()) {

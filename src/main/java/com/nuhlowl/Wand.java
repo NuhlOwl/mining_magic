@@ -1,9 +1,9 @@
 package com.nuhlowl;
 
 import com.nuhlowl.spells.Spell;
-import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.Spells;
-import net.minecraft.component.ComponentMap;
+import net.minecraft.SharedConstants;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -15,6 +15,11 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class Wand extends Item {
+    public static final int BASE_MAX_INCREMENTS = 3;
+    public static final int WAND_BASE_USE_DAMAGE = 1;
+    public static final int WAND_FEEDBACK_USE_MULTIPLIER = 5;
+    public static final int WAND_FEEDBACK_CASTER_DAMAGE = 1;
+
     private Hand chargingWandHand = Hand.MAIN_HAND;
     private boolean charging = false;
 
@@ -48,25 +53,8 @@ public class Wand extends Item {
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (user instanceof PlayerEntity playerEntity && world instanceof ServerWorld serverWorld) {
-            int useTicks = this.getMaxUseTime(stack, user) - remainingUseTicks;
-            if (useTicks > 10) {
-//                ItemStack item = user.getStackInHand(this.chargingWandHand);
-                Hand otherHand = this.chargingWandHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
-                ItemStack reagent = user.getStackInHand(otherHand);
-
-                Spell spell = Spells.getSpellForItem(serverWorld.getSeed(), reagent.getItem());
-
-                if (spell != null) {
-                    SpellCastResult result = spell.castSpell(playerEntity, world, reagent);
-                    if (!user.isInCreativeMode()) {
-                        reagent.decrement(result.cost);
-                    }
-                    user.setStackInHand(otherHand, reagent);
-                }
-            } else {
-                MiningMagic.LOGGER.info("fail");
-            }
+        if (world instanceof ServerWorld serverWorld) {
+            this.castSpell(remainingUseTicks, stack, user, serverWorld);
         }
 
         this.charging = false;
@@ -84,5 +72,60 @@ public class Wand extends Item {
 
     public boolean isCharging() {
         return this.charging;
+    }
+
+    private void castSpell(
+            int remainingUseTicks,
+            ItemStack wand,
+            LivingEntity user,
+            ServerWorld world
+    ) {
+        int useTicks = this.getMaxUseTime(wand, user) - remainingUseTicks;
+        Hand otherHand = this.chargingWandHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
+        ItemStack reagent = user.getStackInHand(otherHand);
+
+        Spell spell = Spells.getSpellForItem(world.getSeed(), reagent.getItem());
+
+        if (spell != null) {
+            boolean miscast = false;
+            int increments = useTicks / SharedConstants.TICKS_PER_SECOND;
+            int cost = spell.cost();
+            if (increments == 0) {
+                miscast = true;
+            } else {
+                increments = increments - 1;
+                cost += increments * spell.perIncrementCost();
+            }
+
+            if (increments > BASE_MAX_INCREMENTS) {
+                double overCharge = increments - BASE_MAX_INCREMENTS;
+                double miscastChance = overCharge / (double) BASE_MAX_INCREMENTS;
+                double roll = Math.random();
+                if (miscastChance > roll) {
+                    miscast = true;
+                }
+            } else {
+                if (reagent.getCount() < cost) {
+                    miscast = true;
+                }
+            }
+
+            if (miscast) {
+                this.causeMagicFeedback(wand, user, world);
+            } else {
+                reagent.decrement(cost);
+                spell.castSpell(user, world, reagent);
+                wand.damage(WAND_BASE_USE_DAMAGE, user, this.chargingWandHand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+
+            MiningMagic.LOGGER.info("cast details, use ticks = {}, cost = {}, increments = {}, miscast = {}", useTicks, cost, increments, miscast);
+        }
+
+        user.setStackInHand(otherHand, reagent);
+    }
+
+    private void causeMagicFeedback(ItemStack wand, LivingEntity caster, World world) {
+        caster.damage(world.getDamageSources().magic(), WAND_FEEDBACK_CASTER_DAMAGE);
+        wand.damage(WAND_BASE_USE_DAMAGE * WAND_FEEDBACK_USE_MULTIPLIER, caster, this.chargingWandHand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
     }
 }
