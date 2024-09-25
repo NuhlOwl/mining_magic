@@ -1,7 +1,6 @@
 package com.nuhlowl.spells.status;
 
 import com.nuhlowl.spells.ShotSpellEntity;
-import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.arcane.ArcaneShotSpell;
 import net.minecraft.SharedConstants;
 import net.minecraft.entity.LivingEntity;
