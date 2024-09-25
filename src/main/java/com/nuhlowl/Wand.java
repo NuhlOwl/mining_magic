@@ -19,9 +19,6 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class Wand extends Item {
-    private Hand chargingWandHand = Hand.MAIN_HAND;
-    private boolean charging = false;
-
     public Wand(Settings settings) {
         super(settings);
     }
@@ -43,15 +40,13 @@ public class Wand extends Item {
                 if (itemId == Registries.ITEM.getDefaultId() || spellId == null) {
                     MiningMagic.LOGGER.error("Failed to get ids for spell or item. Spell ({} = {}). Item ({} = {}).", spell, spellId, reagent.getItem(), itemId);
                 } else {
-                    ServerPlayNetworking.send(serverPlayer, new SpellPayload(
+                    serverWorld.getServer().getPlayerManager().sendToAll(ServerPlayNetworking.createS2CPacket(new SpellPayload(
                             spellId,
                             itemId
-                    ));
+                    )));
                 }
 
                 user.setCurrentHand(hand);
-                this.chargingWandHand = hand;
-                this.charging = true;
                 return TypedActionResult.success(item);
             }
         }
@@ -68,9 +63,10 @@ public class Wand extends Item {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (world instanceof ServerWorld serverWorld) {
             this.castSpell(stack, user, serverWorld);
+        } else {
+            CurrentSpellInfo result = getCurrentSpellInfo(stack, world, user);
+            MiningMagic.LOGGER.info("client spell: {}", result.spell());
         }
-
-        this.charging = false;
     }
 
     @Override
@@ -81,10 +77,6 @@ public class Wand extends Item {
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
-    }
-
-    public boolean isCharging() {
-        return this.charging;
     }
 
     public boolean isCastReady(ItemStack wand, World world, LivingEntity user) {
@@ -116,7 +108,7 @@ public class Wand extends Item {
     private CurrentSpellInfo getCurrentSpellInfo(ItemStack wand, World world, LivingEntity user) {
         int remainingUseTicks = user.getItemUseTimeLeft();
         int useTicks = this.getMaxUseTime(wand, user) - remainingUseTicks;
-        Hand otherHand = this.chargingWandHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
+        Hand otherHand = user.getActiveHand() == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
         ItemStack reagent = user.getStackInHand(otherHand);
         Spell spell = Spells.getClientSpellForItem(reagent.getItem());
         if (world instanceof ServerWorld serverWorld) {
@@ -135,6 +127,7 @@ public class Wand extends Item {
             ServerWorld world
     ) {
         CurrentSpellInfo result = getCurrentSpellInfo(wand, world, user);
+        MiningMagic.LOGGER.info("server spell: {}", result.spell());
         if (result.spell() != null) {
             int cost = result.spell().cost();
             int increments = 0;
@@ -167,7 +160,7 @@ public class Wand extends Item {
                 this.causeMagicFeedback(wand, user, world);
             } else {
                 result.spell().castSpell(user, world, result.reagent(), increments);
-                wand.damage(MiningMagicRules.WAND_USE_BASE_DURABILITY_DAMAGE, user, this.wandEquipmentSlot());
+                wand.damage(MiningMagicRules.WAND_USE_BASE_DURABILITY_DAMAGE, user, this.wandEquipmentSlot(user));
             }
 
             user.setStackInHand(result.reagentHand(), result.reagent());
@@ -178,10 +171,10 @@ public class Wand extends Item {
         caster.damage(world.getDamageSources().magic(), MiningMagicRules.WAND_USE_FEEDBACK_CASTER_DAMAGE);
         int damage = MiningMagicRules.WAND_USE_BASE_DURABILITY_DAMAGE *
                 MiningMagicRules.WAND_USE_FEEDBACK_DURABILITY_DAMAGE_MULTIPLIER;
-        wand.damage(damage, caster, wandEquipmentSlot());
+        wand.damage(damage, caster, wandEquipmentSlot(caster));
     }
 
-    private EquipmentSlot wandEquipmentSlot() {
-        return this.chargingWandHand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
+    private EquipmentSlot wandEquipmentSlot(LivingEntity caster) {
+        return caster.getActiveHand() == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
     }
 }
