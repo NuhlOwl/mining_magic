@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "miningmagic:item/amethyst_wand"
+		"layer0": "miningmagic:item/wand/casing/wood_casing",
+		"layer1": "miningmagic:item/wand/catalyst/amethyst_catalyst"
 	},
 	"display": {
 		"thirdperson_righthand": {
@@ -32,6 +33,37 @@
 				"miningmagic:charging": 1
 			},
 			"model": "miningmagic:item/wand_cast_0"
+		},
+		{
+			"predicate": {
+				"miningmagic:charging": 1,
+				"miningmagic:ready": 1.0
+			},
+			"model": "miningmagic:item/wand_cast_1"
+		},
+		{
+			"predicate": {
+				"miningmagic:charging": 1,
+				"miningmagic:ready": 1.0,
+				"miningmagic:charge_level": 0.33
+			},
+			"model": "miningmagic:item/wand_cast_2"
+		},
+		{
+			"predicate": {
+				"miningmagic:charging": 1,
+				"miningmagic:ready": 1.0,
+				"miningmagic:charge_level": 0.67
+			},
+			"model": "miningmagic:item/wand_cast_3"
+		},
+		{
+			"predicate": {
+				"miningmagic:charging": 1,
+				"miningmagic:ready": 1.0,
+				"miningmagic:charge_level": 1.0
+			},
+			"model": "miningmagic:item/wand_cast_4"
 		}
 	]
 }

@@ -3,6 +3,7 @@ package com.nuhlowl.spells.status;
 import com.nuhlowl.spells.ShotSpellEntity;
 import com.nuhlowl.spells.SpellCastResult;
 import com.nuhlowl.spells.arcane.ArcaneShotSpell;
+import net.minecraft.SharedConstants;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -99,7 +100,12 @@ public class StatusEffectSpell extends ArcaneShotSpell {
     }
 
     public StatusEffectSpell(StatusId statusId, int cost, int perIncrementCost) {
-        super(cost, perIncrementCost);
+        super(cost, perIncrementCost, SharedConstants.TICKS_PER_SECOND, SharedConstants.TICKS_PER_SECOND, 3);
+        this.statusId = statusId;
+    }
+
+    public StatusEffectSpell(StatusId statusId, int cost, int perIncrementCost, int ticksToCast, int ticksPerIncrement) {
+        super(cost, perIncrementCost, ticksToCast, ticksPerIncrement, 3);
         this.statusId = statusId;
     }
 
@@ -116,14 +122,16 @@ public class StatusEffectSpell extends ArcaneShotSpell {
     }
 
     @Override
-    public SpellCastResult castSpell(LivingEntity user, World world, ItemStack reagent) {
+    public void castSpell(LivingEntity user, World world, ItemStack reagent, int increments) {
         RegistryEntry<StatusEffect> effect = getEffect();
 
+        int duration = getBaseDuration() + getDurationPerIncrement() * increments;
+
         if (effect.value().isBeneficial()) {
-            user.addStatusEffect(new StatusEffectInstance(effect, 20, 0), user);
+            user.addStatusEffect(new StatusEffectInstance(effect, duration, 0), user);
         } else {
             ShotSpellEntity arcaneShotEntity = new StatusEffectSpellEntity(
-                    new StatusEffectInstance(effect, 20, 0),
+                    new StatusEffectInstance(effect, duration, 0),
                     world,
                     user.getPos().getX(),
                     user.getEyePos().getY(),
@@ -139,7 +147,25 @@ public class StatusEffectSpell extends ArcaneShotSpell {
 
             world.spawnEntity(arcaneShotEntity);
         }
+    }
 
-        return new SpellCastResult(1);
+    public int getBaseDuration() {
+        if (this.getEffect().value().isBeneficial()) {
+            return 10 * SharedConstants.TICKS_PER_SECOND;
+        } else if (this.getEffect().value().isInstant()) {
+            return 1;
+        }
+
+        return 3 * SharedConstants.TICKS_PER_SECOND;
+    }
+
+    public int getDurationPerIncrement() {
+        if (this.getEffect().value().isBeneficial()) {
+            return 5 * SharedConstants.TICKS_PER_SECOND;
+        } else if (this.getEffect().value().isInstant()) {
+            return 0;
+        }
+
+        return 1;
     }
 }

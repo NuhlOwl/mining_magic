@@ -2,22 +2,15 @@ package com.nuhlowl.spells.status;
 
 import com.nuhlowl.MiningMagic;
 import com.nuhlowl.spells.ShotSpellEntity;
-import com.nuhlowl.spells.arcane.ArcaneShotEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.server.network.EntityTrackerEntry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.world.World;
-
-import java.util.UUID;
 
 public class StatusEffectSpellEntity extends ShotSpellEntity {
     private StatusEffectInstance effect;
@@ -70,12 +63,6 @@ public class StatusEffectSpellEntity extends ShotSpellEntity {
     @Override
     public int getColor() {
         int color = effect.getEffectType().value().getColor();
-//        MiningMagic.LOGGER.info("client tick: {} {} {} {}",
-//                ColorHelper.Argb.getAlpha(color),
-//                ColorHelper.Argb.getRed(color),
-//                ColorHelper.Argb.getGreen(color),
-//                ColorHelper.Argb.getBlue(color)
-//        );
         return ColorHelper.Argb.getArgb(255,
                 ColorHelper.Argb.getRed(color),
                 ColorHelper.Argb.getGreen(color),
@@ -84,12 +71,8 @@ public class StatusEffectSpellEntity extends ShotSpellEntity {
     }
 
     @Override
-    public void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
-
-        if (!this.getWorld().isClient && entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
-            livingEntity.addStatusEffect(new StatusEffectInstance(effect), this.getOwner());
-        }
+    public void hitTarget(LivingEntity target) {
+        target.addStatusEffect(new StatusEffectInstance(effect), this.getOwner());
     }
 
     @Override
@@ -105,10 +88,5 @@ public class StatusEffectSpellEntity extends ShotSpellEntity {
                     0
             );
         }
-    }
-
-    @Override
-    public Packet<ClientPlayPacketListener> createSpawnPacket(EntityTrackerEntry entityTrackerEntry) {
-        return super.createSpawnPacket(entityTrackerEntry);
     }
 }

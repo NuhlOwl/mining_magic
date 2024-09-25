@@ -7,7 +7,10 @@ import net.minecraft.world.World;
 
 public interface Spell {
     Text getName();
-    SpellCastResult castSpell(LivingEntity user, World world, ItemStack reagent);
+    void castSpell(LivingEntity user, World world, ItemStack reagent, int increments);
     int cost();
     int perIncrementCost();
+    int ticksToCast();
+    int ticksPerIncrement();
+    int maxIncrements();
 }

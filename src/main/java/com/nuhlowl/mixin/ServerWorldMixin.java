@@ -1,11 +1,6 @@
 package com.nuhlowl.mixin;
 
-import com.nuhlowl.MiningMagic;
 import com.nuhlowl.spells.Spells;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.TagManagerLoader;
-import net.minecraft.server.DataPackContents;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

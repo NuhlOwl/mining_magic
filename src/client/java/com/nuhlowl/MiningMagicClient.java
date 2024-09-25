@@ -1,21 +1,47 @@
 package com.nuhlowl;
 
+import com.nuhlowl.network.SpellPayload;
+import com.nuhlowl.spells.Spell;
+import com.nuhlowl.spells.Spells;
 import com.nuhlowl.spells.arcane.ArcaneParticle;
 import com.nuhlowl.spells.arcane.ArcaneShotEntityRenderer;
-import com.nuhlowl.spells.arcane.ShotSpellEntityRenderer;
 import com.nuhlowl.spells.arcane.StatusEffectSpellEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 public class MiningMagicClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+		ClientPlayNetworking.registerGlobalReceiver(
+				SpellPayload.ID,
+				new ClientPlayNetworking.PlayPayloadHandler<SpellPayload>() {
+					@Override
+					public void receive(SpellPayload payload, ClientPlayNetworking.Context context) {
+						Optional<Item> item = Registries.ITEM.getOrEmpty(payload.item());
+						Optional<Spell> spell = Spells.getOrEmpty(payload.spell());
+
+						if (item.isEmpty() || spell.isEmpty()) {
+							MiningMagic.LOGGER.error("Could not register server received spell combo. Spell ({} = {}). Item ({} = {})", payload.spell(), spell, payload.item(), item);
+							return;
+						}
+
+						Spells.registerClientSpellItemAssociation(spell.get(), item.get());
+					}
+				}
+		);
+
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		BlockRenderLayerMap.INSTANCE.putBlock(MiningMagic.AMETHYST_RUNE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(MiningMagic.AMETHYST_DUST_BLOCK, RenderLayer.getCutout());
@@ -39,6 +65,28 @@ public class MiningMagicClient implements ClientModInitializer {
 				((stack, world, entity, seed) -> {
 					if (stack.getItem() instanceof Wand wand) {
 						return wand.isCharging() ? 1.0F : 0.0F;
+					}
+					return 0.0F;
+				})
+		);
+
+		ModelPredicateProviderRegistry.register(
+				MiningMagic.WAND,
+				Identifier.of(MiningMagic.MOD_ID, "ready"),
+				((stack, world, entity, seed) -> {
+					if (stack.getItem() instanceof Wand wand && entity != null) {
+						return wand.isCastReady(stack, world, entity) ? 1.0F : 0.0F;
+					}
+					return 0.0F;
+				})
+		);
+
+		ModelPredicateProviderRegistry.register(
+				MiningMagic.WAND,
+				Identifier.of(MiningMagic.MOD_ID, "charge_level"),
+				((stack, world, entity, seed) -> {
+					if (stack.getItem() instanceof Wand wand && entity != null) {
+						return wand.getChargeLevel(stack, world, entity);
 					}
 					return 0.0F;
 				})

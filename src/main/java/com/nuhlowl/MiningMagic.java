@@ -3,6 +3,7 @@ package com.nuhlowl;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.MapCodec;
 import com.nuhlowl.commands.SpellsCommand;
+import com.nuhlowl.network.SpellPayload;
 import com.nuhlowl.spells.arcane.ArcaneParticleEffect;
 import com.nuhlowl.spells.arcane.ArcaneShotEntity;
 import com.nuhlowl.spells.status.StatusEffectSpellEntity;
@@ -13,6 +14,8 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -114,6 +117,19 @@ public class MiningMagic implements ModInitializer {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
+
+        PayloadTypeRegistry.playC2S().register(SpellPayload.ID, SpellPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(SpellPayload.ID, SpellPayload.CODEC);
+
+        ServerPlayNetworking.registerGlobalReceiver(
+                SpellPayload.ID,
+                new ServerPlayNetworking.PlayPayloadHandler<SpellPayload>() {
+                    @Override
+                    public void receive(SpellPayload payload, ServerPlayNetworking.Context context) {
+                        MiningMagic.LOGGER.info("server receive: {}={}", payload.spell(), payload.item());
+                    }
+                }
+        );
 
         Jobs.init();
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {

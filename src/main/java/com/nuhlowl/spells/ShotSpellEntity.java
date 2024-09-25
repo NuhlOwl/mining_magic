@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class ShotSpellEntity extends ExplosiveProjectileEntity {
-    public static final float DAMAGE = 1.0F;
 
     public ShotSpellEntity(EntityType<? extends ShotSpellEntity> entityType, World world) {
         super(entityType, world);
@@ -66,9 +65,8 @@ public abstract class ShotSpellEntity extends ExplosiveProjectileEntity {
                 caster.onAttacking(hitEntity);
             }
 
-            DamageSource damageSource = this.getDamageSources().magic();
-            if (hitEntity.damage(damageSource, DAMAGE) && hitEntity instanceof LivingEntity livingEntity) {
-                EnchantmentHelper.onTargetDamaged((ServerWorld) this.getWorld(), livingEntity, damageSource);
+            if (hitEntity instanceof LivingEntity livingEntity) {
+                this.hitTarget(livingEntity);
             }
 
             this.createHitParticles(getPos());
@@ -139,6 +137,7 @@ public abstract class ShotSpellEntity extends ExplosiveProjectileEntity {
         }
     }
 
+    abstract public void hitTarget(LivingEntity target);
     abstract public ParticleEffect getTrailEffect();
     abstract public ParticleEffect getHitEffect();
     abstract public Identifier getTexture();

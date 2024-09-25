@@ -1,5 +1,6 @@
 package com.nuhlowl.spells;
 
+import net.minecraft.SharedConstants;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.ItemStack;
@@ -15,8 +16,7 @@ public class FireBallSpell implements Spell {
     }
 
     @Override
-    public SpellCastResult castSpell(LivingEntity user, World world, ItemStack reagent) {
-
+    public void castSpell(LivingEntity user, World world, ItemStack reagent, int increments) {
         float x = -MathHelper.sin(user.getYaw() * (float) (Math.PI / 180.0)) * MathHelper.cos(user.getPitch() * (float) (Math.PI / 180.0));
         float y = -MathHelper.sin(user.getPitch() * (float) (Math.PI / 180.0));
         float z = MathHelper.cos(user.getYaw() * (float) (Math.PI / 180.0)) * MathHelper.cos(user.getPitch() * (float) (Math.PI / 180.0));
@@ -26,8 +26,6 @@ public class FireBallSpell implements Spell {
         //            smallFireballEntity.setItem(stack);
         smallFireballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F , 1.5F, 1.0F);
         world.spawnEntity(smallFireballEntity);
-
-        return new SpellCastResult(1);
     }
 
     @Override
@@ -38,5 +36,20 @@ public class FireBallSpell implements Spell {
     @Override
     public int perIncrementCost() {
         return 2;
+    }
+
+    @Override
+    public int ticksToCast() {
+        return SharedConstants.TICKS_PER_SECOND * 3;
+    }
+
+    @Override
+    public int ticksPerIncrement() {
+        return SharedConstants.TICKS_PER_SECOND;
+    }
+
+    @Override
+    public int maxIncrements() {
+        return 3;
     }
 }

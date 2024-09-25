@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "miningmagic:item/wand_cast_0",
+	"textures": {
+		"layer0": "miningmagic:item/wand/casing/wood_casing",
+		"layer1": "miningmagic:item/wand/catalyst/amethyst_catalyst",
+		"layer2": "miningmagic:item/wand/charge/amethyst_charge_3"
+	}
+}
