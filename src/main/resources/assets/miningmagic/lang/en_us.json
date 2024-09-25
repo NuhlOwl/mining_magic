@@ -10,6 +10,15 @@
   "block.miningmagic.loot_crate": "Loot Crate",
   "item.miningmagic.log_rack": "Log Rack",
   "block.miningmagic.log_rack": "Log Rack",
+  "gamerule.gathererAvgSuccessPerDay": "Gatherer Avg Success Per Day",
+  "gamerule.gathererAvgSuccessPerNight": "Gatherer Avg Success Per Night",
+  "gamerule.beneficialStatusSpellBaseDurationSeconds": "Beneficial Status Spells Base Duration in Seconds",
+  "gamerule.beneficialStatusSpellIncrementDurationSeconds": "Beneficial Status Spells Increment Duration in Seconds",
+  "gamerule.harmfulStatusSpellBaseDurationSeconds": "Harmful Status Spells Base Duration in Seconds",
+  "gamerule.harmfulStatusSpellIncrementDurationSeconds": "Harmful Status Spells Increment Duration in Seconds",
+  "gamerule.wandUseBaseDurabilityDamage": "Wand Use Base Durability Damage",
+  "gamerule.wandUseFeedbackDurabilityDamageMultiplier": "Wand Use Feedback Durability Damage Multiplier",
+  "gamerule.wandUseFeedbackCasterDamage": "Wand Use Feedback Caster Damage",
 
   "miningmagic.sluice_container": "Sluice",
   "miningmagic.log_rack_container": "Log Rack",
@@ -21,5 +30,6 @@
   "miningmagic.spells.arcane_shot": "Arcane Shot",
   "miningmagic.spells.status_effect": "%s Spell",
   "miningmagic.commands.spells.spell_item_combination": "%s casts %s",
-  "miningmagic.commands.spells.header": "Spells:"
+  "miningmagic.commands.spells.header": "Spells:",
+  "miningmagic.rules": "Mining Magic"
 }

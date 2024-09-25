@@ -5,10 +5,6 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:empty",
-          "weight": 20000
-        },
-        {
           "type": "minecraft:item",
           "name": "minecraft:clay_ball",
           "weight": 8

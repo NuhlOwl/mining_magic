@@ -19,10 +19,6 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class Wand extends Item {
-    public static final int WAND_BASE_USE_DAMAGE = 1;
-    public static final int WAND_FEEDBACK_USE_MULTIPLIER = 5;
-    public static final int WAND_FEEDBACK_CASTER_DAMAGE = 1;
-
     private Hand chargingWandHand = Hand.MAIN_HAND;
     private boolean charging = false;
 
@@ -143,10 +139,9 @@ public class Wand extends Item {
             int cost = result.spell().cost();
             int increments = 0;
             boolean miscast = false;
-            int remainingTicks = result.incrementTicks();
 
-            if (remainingTicks >= 0) {
-                increments = remainingTicks / result.spell().ticksPerIncrement();
+            if (result.incrementTicks() >= 0) {
+                increments = result.incrementTicks() / result.spell().ticksPerIncrement();
                 cost += increments * result.spell().perIncrementCost();
 
                 if (increments > result.spell().maxIncrements()) {
@@ -161,6 +156,9 @@ public class Wand extends Item {
                         miscast = true;
                     }
                 }
+            } else {
+                // negative means minimum cast time hasn't been reached yet
+                miscast = true;
             }
 
             result.reagent().decrement(cost);
@@ -169,7 +167,7 @@ public class Wand extends Item {
                 this.causeMagicFeedback(wand, user, world);
             } else {
                 result.spell().castSpell(user, world, result.reagent(), increments);
-                wand.damage(WAND_BASE_USE_DAMAGE, user, this.wandEquipmentSlot());
+                wand.damage(MiningMagicRules.WAND_USE_BASE_DURABILITY_DAMAGE, user, this.wandEquipmentSlot());
             }
 
             user.setStackInHand(result.reagentHand(), result.reagent());
@@ -177,8 +175,10 @@ public class Wand extends Item {
     }
 
     private void causeMagicFeedback(ItemStack wand, LivingEntity caster, World world) {
-        caster.damage(world.getDamageSources().magic(), WAND_FEEDBACK_CASTER_DAMAGE);
-        wand.damage(WAND_BASE_USE_DAMAGE * WAND_FEEDBACK_USE_MULTIPLIER, caster, wandEquipmentSlot());
+        caster.damage(world.getDamageSources().magic(), MiningMagicRules.WAND_USE_FEEDBACK_CASTER_DAMAGE);
+        int damage = MiningMagicRules.WAND_USE_BASE_DURABILITY_DAMAGE *
+                MiningMagicRules.WAND_USE_FEEDBACK_DURABILITY_DAMAGE_MULTIPLIER;
+        wand.damage(damage, caster, wandEquipmentSlot());
     }
 
     private EquipmentSlot wandEquipmentSlot() {

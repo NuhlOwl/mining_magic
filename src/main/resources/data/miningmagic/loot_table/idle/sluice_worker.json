@@ -5,10 +5,6 @@
       "bonus_rolls": 1.0,
       "entries": [
         {
-          "type": "minecraft:empty",
-          "weight": 11000
-        },
-        {
           "type": "minecraft:item",
           "name": "minecraft:coal",
           "weight": 30,
@@ -194,10 +190,6 @@
     {
       "bonus_rolls": 1.0,
       "entries": [
-        {
-          "type": "minecraft:empty",
-          "weight": 12000
-        },
         {
           "type": "minecraft:item",
           "name": "minecraft:amethyst_shard",

@@ -1,5 +1,6 @@
 package com.nuhlowl.spells.status;
 
+import com.nuhlowl.MiningMagicRules;
 import com.nuhlowl.spells.ShotSpellEntity;
 import com.nuhlowl.spells.arcane.ArcaneShotSpell;
 import net.minecraft.SharedConstants;
@@ -43,7 +44,7 @@ public class StatusEffectSpell extends ArcaneShotSpell {
         INFESTED_ID("0023"),
         WIND_CHARGED_ID("0024");
 
-        private String id;
+        private final String id;
 
         StatusId(String id) {
             this.id = id;
@@ -124,7 +125,7 @@ public class StatusEffectSpell extends ArcaneShotSpell {
     public void castSpell(LivingEntity user, World world, ItemStack reagent, int increments) {
         RegistryEntry<StatusEffect> effect = getEffect();
 
-        int duration = getBaseDuration() + getDurationPerIncrement() * increments;
+        int duration = getBaseDuration(world) + getDurationPerIncrement(world) * increments;
 
         if (effect.value().isBeneficial()) {
             user.addStatusEffect(new StatusEffectInstance(effect, duration, 0), user);
@@ -148,23 +149,25 @@ public class StatusEffectSpell extends ArcaneShotSpell {
         }
     }
 
-    public int getBaseDuration() {
+    public int getBaseDuration(World world) {
         if (this.getEffect().value().isBeneficial()) {
-            return 10 * SharedConstants.TICKS_PER_SECOND;
+            return MiningMagicRules.BENEFICIAL_STATUS_SPELL_BASE_DURATION_SECONDS * SharedConstants.TICKS_PER_SECOND;
         } else if (this.getEffect().value().isInstant()) {
+            // instead of worrying about calling applyStatus vs applyInstantStatus
+            // set duration to 1 tick and let existing logic apply damage
             return 1;
         }
 
-        return 3 * SharedConstants.TICKS_PER_SECOND;
+        return MiningMagicRules.HARMFUL_STATUS_SPELL_BASE_DURATION_SECONDS * SharedConstants.TICKS_PER_SECOND;
     }
 
-    public int getDurationPerIncrement() {
+    public int getDurationPerIncrement(World world) {
         if (this.getEffect().value().isBeneficial()) {
-            return 5 * SharedConstants.TICKS_PER_SECOND;
+            return MiningMagicRules.BENEFICIAL_STATUS_SPELL_INCREMENT_DURATION_SECONDS * SharedConstants.TICKS_PER_SECOND;
         } else if (this.getEffect().value().isInstant()) {
             return 0;
         }
 
-        return 1;
+        return MiningMagicRules.HARMFUL_STATUS_SPELL_INCREMENT_DURATION_SECONDS;
     }
 }

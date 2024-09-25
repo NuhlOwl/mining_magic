@@ -1,6 +1,8 @@
 package com.nuhlowl.villagers;
 
 import com.nuhlowl.MiningMagic;
+import com.nuhlowl.MiningMagicRules;
+import net.minecraft.SharedConstants;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
@@ -29,6 +31,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.village.TradeOffer;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -136,6 +139,22 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
 
     private void generateWorkerLoot(World world, AbstractGathererJobBlockEntity entity) {
         entity.findWorker(world).ifPresent((worker) -> {
+            double avgSuccesses = MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_DAY;
+            if (world.isNight()) {
+                avgSuccesses = MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_NIGHT;
+            }
+            if (avgSuccesses <= 0) {
+                return;
+            }
+            // game day includes daytime and nighttime, halve it to roll day and night separately
+            double halfGameDay = (double) SharedConstants.TICKS_PER_IN_GAME_DAY / 2.0;
+            double successChance = (halfGameDay / avgSuccesses) / halfGameDay;
+            double roll = world.getRandom().nextDouble();
+
+            if (roll > successChance) {
+                return;
+            }
+
             LootTable lootTable = getWorkerLootTable();
             LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld()))
                     .luck(worker.getVillagerData().getLevel())
@@ -143,17 +162,15 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
             List<ItemStack> loot = lootTable.generateLoot(set);
             entity.addLootToInventory(loot);
 
-            if (!loot.isEmpty()) {
-                TradeOffer trade = new TradeOffer(
-                        null,
-                        ItemStack.EMPTY,
-                        0,
-                        1,
-                        0
-                );
-                worker.trade(trade);
-                worker.setExperienceFromServer(worker.getExperience() + trade.getMerchantExperience());
-            }
+            TradeOffer trade = new TradeOffer(
+                    null,
+                    ItemStack.EMPTY,
+                    0,
+                    1,
+                    0
+            );
+            worker.trade(trade);
+            worker.setExperienceFromServer(worker.getExperience() + trade.getMerchantExperience());
         });
     }
 

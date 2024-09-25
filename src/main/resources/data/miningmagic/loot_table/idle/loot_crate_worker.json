@@ -5,10 +5,6 @@
       "bonus_rolls": 1.0,
       "entries": [
         {
-          "type": "minecraft:empty",
-          "weight": 10000
-        },
-        {
           "type": "minecraft:item",
           "name": "minecraft:rotten_flesh",
           "weight": 50,
