@@ -3,8 +3,8 @@ package com.nuhlowl;
 public class MiningMagicRules {
     public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_DAY = 1;
     public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_NIGHT = 1;
-    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 1;
-    public static int GATHERER_AVG_SUCCESSES_PER_NIGHT = 0;
+    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 20;
+    public static int GATHERER_AVG_SUCCESSES_PER_NIGHT = 5;
     public static int BENEFICIAL_STATUS_SPELL_BASE_DURATION_SECONDS = 10;
     public static int BENEFICIAL_STATUS_SPELL_INCREMENT_DURATION_SECONDS = 5;
     public static int HARMFUL_STATUS_SPELL_BASE_DURATION_SECONDS = 3;
@@ -12,6 +12,7 @@ public class MiningMagicRules {
     public static int WAND_USE_BASE_DURABILITY_DAMAGE = 1;
     public static int WAND_USE_FEEDBACK_DURABILITY_DAMAGE_MULTIPLIER = 5;
     public static int WAND_USE_FEEDBACK_CASTER_DAMAGE = 1;
+
 //    public static final CustomGameRuleCategory MINING_MAGIC_CATEGORY = new CustomGameRuleCategory(Identifier.of(MiningMagic.MOD_ID, "rules"), Text.translatable("miningmagic.rules"));
 //
 //    public static final GameRules.Key<GameRules.IntRule> GATHERER_AVG_SUCCESSES_PER_DAY = GameRuleRegistry.register(

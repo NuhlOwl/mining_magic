@@ -206,7 +206,6 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
     }
 
     protected void addLootToInventory(List<ItemStack> loot) {
-        MiningMagic.LOGGER.info("adding loot {}", loot.size());
         for (ItemStack lootStack : loot) {
             if (lootStack.isEmpty()) {
                 continue;
@@ -225,7 +224,6 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
                 int willGive = Math.min(available, toGive);
                 toGive -= willGive;
                 slot.increment(willGive);
-                MiningMagic.LOGGER.info("{} available, gave {}, remaining {}", available, willGive, toGive);
             }
         }
         this.markDirty();
@@ -235,13 +233,11 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
         for (int i = 0; i < inventory.size(); i++) {
             ItemStack inventoryStack = inventory.get(i);
             if (item == inventoryStack.getItem() && inventoryStack.getCount() < inventoryStack.getMaxCount()) {
-                MiningMagic.LOGGER.info("found existing");
                 return inventoryStack;
             } else if (inventoryStack.isEmpty()) {
                 ItemStack newStack = new ItemStack(item);
                 newStack.setCount(0);
                 inventory.set(i, newStack);
-                MiningMagic.LOGGER.info("found empty");
                 return newStack;
             }
         }

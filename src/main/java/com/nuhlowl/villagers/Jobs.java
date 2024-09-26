@@ -105,7 +105,7 @@ public class Jobs {
 
         // game day includes daytime and nighttime, halve it to roll day and night separately
         double halfGameDay = (double) SharedConstants.TICKS_PER_IN_GAME_DAY / 2.0;
-        double successChance = (halfGameDay / avgSuccesses) / halfGameDay;
+        double successChance = avgSuccesses / halfGameDay;
         double roll = world.getRandom().nextDouble();
 
         return roll <= successChance;
