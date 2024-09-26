@@ -1,17 +1,10 @@
 package com.nuhlowl;
 
-import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
-import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
-import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.GameRules;
-
 public class MiningMagicRules {
-    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_DAY = 5;
-    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_NIGHT = 5;
-    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 10;
-    public static int GATHERER_AVG_SUCCESSES_PER_NIGHT = 5;
+    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_DAY = 1;
+    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_NIGHT = 1;
+    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 1;
+    public static int GATHERER_AVG_SUCCESSES_PER_NIGHT = 0;
     public static int BENEFICIAL_STATUS_SPELL_BASE_DURATION_SECONDS = 10;
     public static int BENEFICIAL_STATUS_SPELL_INCREMENT_DURATION_SECONDS = 5;
     public static int HARMFUL_STATUS_SPELL_BASE_DURATION_SECONDS = 3;
