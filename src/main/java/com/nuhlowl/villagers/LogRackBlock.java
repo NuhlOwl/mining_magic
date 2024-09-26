@@ -60,8 +60,8 @@ public class LogRackBlock extends BlockWithEntity {
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof LogRackBlockEntity sluiceBlockEntity) {
-            sluiceBlockEntity.generateGathererLoot();
+        if (blockEntity instanceof LogRackBlockEntity logRackBlockEntity) {
+            logRackBlockEntity.generateGathererLoot();
         }
     }
 

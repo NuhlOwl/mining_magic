@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContextParameterSet;
@@ -31,7 +32,6 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.village.TradeOffer;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -139,19 +139,7 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
 
     private void generateWorkerLoot(World world, AbstractGathererJobBlockEntity entity) {
         entity.findWorker(world).ifPresent((worker) -> {
-            double avgSuccesses = MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_DAY;
-            if (world.isNight()) {
-                avgSuccesses = MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_NIGHT;
-            }
-            if (avgSuccesses <= 0) {
-                return;
-            }
-            // game day includes daytime and nighttime, halve it to roll day and night separately
-            double halfGameDay = (double) SharedConstants.TICKS_PER_IN_GAME_DAY / 2.0;
-            double successChance = (halfGameDay / avgSuccesses) / halfGameDay;
-            double roll = world.getRandom().nextDouble();
-
-            if (roll > successChance) {
+            if (!Jobs.rollIdleLoot(world, MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_DAY, MiningMagicRules.GATHERER_AVG_SUCCESSES_PER_NIGHT)) {
                 return;
             }
 
@@ -217,37 +205,43 @@ public abstract class AbstractGathererJobBlockEntity extends LootableContainerBl
     }
 
     protected void addLootToInventory(List<ItemStack> loot) {
-        for (ItemStack stack : loot) {
-            if (stack.isEmpty()) {
+        for (ItemStack lootStack : loot) {
+            if (lootStack.isEmpty()) {
                 continue;
             }
-            // find existing matching stack in inventory
-            for (int i = 0; i < inventory.size(); i++) {
-                ItemStack inventoryStack = inventory.get(i);
-                if ((stack.getItem() == inventoryStack.getItem() || inventoryStack.isEmpty())) {
-                    int newCount = stack.getCount() + inventoryStack.getCount();
-                    ItemStack copy = stack.copy();
-                    if (newCount > copy.getMaxCount()) {
-                        copy.setCount(copy.getMaxCount());
-                        inventory.set(i, copy);
-                        int remaining = newCount % copy.getMaxCount();
 
-                        for (int j = 0; j < inventory.size(); j++) {
-                            if (inventory.get(j).isEmpty()) {
-                                ItemStack extra = stack.split(remaining);
-                                inventory.set(j, extra);
-                            }
-                        }
-                    } else {
-                        copy.setCount(newCount);
-                        inventory.set(i, copy);
-                    }
+            int toGive = lootStack.getCount();
 
-                    this.markDirty();
+            while (toGive > 0) {
+                ItemStack slot = findEmptyOrMatchingSlot(lootStack.getItem());
+                if (slot == null) {
+                    // no available slots
                     break;
                 }
+
+                int available = slot.getMaxCount() - slot.getCount();
+                int willGive = Math.min(available, toGive);
+                toGive -= willGive;
+                slot.increment(willGive);
             }
         }
+        this.markDirty();
+    }
+
+    private ItemStack findEmptyOrMatchingSlot(Item item) {
+        for (int i = 0; i < inventory.size(); i++) {
+            ItemStack inventoryStack = inventory.get(i);
+            boolean hasRoom = inventoryStack.getCount() < inventoryStack.getMaxCount();
+            if (item == inventoryStack.getItem() && hasRoom) {
+                return inventoryStack;
+            } else if (inventoryStack.isEmpty()) {
+                ItemStack newStack = new ItemStack(item);
+                inventory.set(i, newStack);
+                return newStack;
+            }
+        }
+
+        return null;
     }
 
     abstract protected LootTable getWorkerLootTable();

@@ -272,6 +272,22 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:redstone",
+          "weight": 10,
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 10.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:lapis_lazuli",
           "weight": 10,
           "functions": [
@@ -367,11 +383,7 @@
           ]
         }
       ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 3.0,
-        "min": 1.0
-      }
+      "rolls": 1.0
     }
   ],
   "random_sequence": "miningmagic:idle/sluice_worker"

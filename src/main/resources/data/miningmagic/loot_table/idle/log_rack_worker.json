@@ -133,11 +133,7 @@
           ]
         }
       ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 5.0,
-        "min": 2.0
-      }
+      "rolls": 1.0
     }
   ],
   "random_sequence": "miningmagic:idle/log_rack_worker"

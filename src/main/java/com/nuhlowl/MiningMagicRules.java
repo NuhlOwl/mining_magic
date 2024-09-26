@@ -8,7 +8,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 
 public class MiningMagicRules {
-    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 20;
+    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_DAY = 5;
+    public static int IDLE_LOOT_BLOCKS_SUCCESSES_PER_NIGHT = 5;
+    public static int GATHERER_AVG_SUCCESSES_PER_DAY = 10;
     public static int GATHERER_AVG_SUCCESSES_PER_NIGHT = 5;
     public static int BENEFICIAL_STATUS_SPELL_BASE_DURATION_SECONDS = 10;
     public static int BENEFICIAL_STATUS_SPELL_INCREMENT_DURATION_SECONDS = 5;

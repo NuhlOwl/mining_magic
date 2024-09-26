@@ -2,6 +2,8 @@ package com.nuhlowl.villagers;
 
 import com.google.common.collect.ImmutableSet;
 import com.nuhlowl.MiningMagic;
+import com.nuhlowl.MiningMagicRules;
+import net.minecraft.SharedConstants;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,6 +19,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.world.World;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.minecraft.world.poi.PointOfInterestTypes;
 
@@ -91,5 +94,20 @@ public class Jobs {
 
     public static RegistryKey<PointOfInterestType> registerPOI(String id) {
         return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.of(MiningMagic.MOD_ID, id));
+    }
+
+    public static boolean rollIdleLoot(World world, int avgSuccessPerDay, int avgSuccessPerNight) {
+        double avgSuccesses = world.isDay() ? avgSuccessPerDay : avgSuccessPerNight;
+
+        if (avgSuccesses <= 0) {
+            return false;
+        }
+
+        // game day includes daytime and nighttime, halve it to roll day and night separately
+        double halfGameDay = (double) SharedConstants.TICKS_PER_IN_GAME_DAY / 2.0;
+        double successChance = (halfGameDay / avgSuccesses) / halfGameDay;
+        double roll = world.getRandom().nextDouble();
+
+        return roll <= successChance;
     }
 }

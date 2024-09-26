@@ -1,6 +1,7 @@
 package com.nuhlowl.villagers;
 
 import com.nuhlowl.MiningMagic;
+import com.nuhlowl.MiningMagicRules;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.List;
 
@@ -61,13 +63,22 @@ public class SluiceBlockEntity extends AbstractGathererJobBlockEntity {
         return SoundEvents.BLOCK_IRON_DOOR_OPEN;
     }
 
-    public void generateIdleLoot(boolean waterlogged) {
+    public void generateIdleLoot(World world, boolean waterlogged) {
         if (waterlogged) {
-            generateWaterLoggedLoot();
+            generateWaterLoggedLoot(world);
         }
     }
 
-    private void generateWaterLoggedLoot() {
+    private void generateWaterLoggedLoot(World world) {
+        if (!Jobs.rollIdleLoot(world, MiningMagicRules.IDLE_LOOT_BLOCKS_SUCCESSES_PER_DAY, MiningMagicRules.IDLE_LOOT_BLOCKS_SUCCESSES_PER_NIGHT)) {
+            return;
+        }
+
+        if (world.getServer() == null) {
+            MiningMagic.LOGGER.warn("Could not get server while generating idle loot.");
+            return;
+        }
+
         LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(IDLE_LOOT_TABLE);
         LootContextParameterSet set = (new LootContextParameterSet.Builder((ServerWorld) this.getWorld())).build(LootContextTypes.EMPTY);
         List<ItemStack> loot = lootTable.generateLoot(set);
